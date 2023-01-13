@@ -3,17 +3,21 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.4.33110.190
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PetAccountSystem.Models", "PetAccountSystem.Models\PetAccountSystem.Models.csproj", "{362D8FDB-253B-4475-91D9-3F0B4E5B4D02}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PetAccountSystem.Models", "PetAccountSystem.Models\PetAccountSystem.Models.csproj", "{362D8FDB-253B-4475-91D9-3F0B4E5B4D02}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PetAccountSystem.AppWPF", "PetAccountSystem.AppWPF\PetAccountSystem.AppWPF.csproj", "{DC078E4D-C049-40F9-BDE0-0F256F2AE6FB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PetAccountSystem.AppWPF", "PetAccountSystem.AppWPF\PetAccountSystem.AppWPF.csproj", "{DC078E4D-C049-40F9-BDE0-0F256F2AE6FB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PetAccountSystem.WebAPI", "PetAccountSystem.WebAPI\PetAccountSystem.WebAPI.csproj", "{6EB67F17-655F-4894-A3C9-15458EEE48BF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PetAccountSystem.WebAPI", "PetAccountSystem.WebAPI\PetAccountSystem.WebAPI.csproj", "{6EB67F17-655F-4894-A3C9-15458EEE48BF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PetAccountSystem.Interfaces", "PetAccountSystem.Interfaces\PetAccountSystem.Interfaces.csproj", "{7911AA42-F422-4BA9-AAB5-82430917FA4F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PetAccountSystem.Interfaces", "PetAccountSystem.Interfaces\PetAccountSystem.Interfaces.csproj", "{7911AA42-F422-4BA9-AAB5-82430917FA4F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PetAccountSystem.App.Client", "PetAccountSystem.App.Client\PetAccountSystem.App.Client.csproj", "{A2BE3302-93E7-42D5-A80F-A991C7BD9BFF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PetAccountSystem.App.Client", "PetAccountSystem.App.Client\PetAccountSystem.App.Client.csproj", "{A2BE3302-93E7-42D5-A80F-A991C7BD9BFF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PetAccountSystem.TestConsole", "PetAccountSystem.TestConsole\PetAccountSystem.TestConsole.csproj", "{4A1A0ACA-240E-4C45-882F-ACCBE93DDEB8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PetAccountSystem.TestConsole", "PetAccountSystem.TestConsole\PetAccountSystem.TestConsole.csproj", "{4A1A0ACA-240E-4C45-882F-ACCBE93DDEB8}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PetAccountSystem.DAL", "PetAccountSystem.DAL\PetAccountSystem.DAL.csproj", "{206E6005-6778-451C-A45F-7011E489F398}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PetAccountSystem.DAL.Sqlite", "PetAccountSystem.DAL.Sqlite\PetAccountSystem.DAL.Sqlite.csproj", "{84508BE6-3502-4263-AEED-6DA5DD3751F4}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -45,6 +49,14 @@ Global
 		{4A1A0ACA-240E-4C45-882F-ACCBE93DDEB8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4A1A0ACA-240E-4C45-882F-ACCBE93DDEB8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4A1A0ACA-240E-4C45-882F-ACCBE93DDEB8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{206E6005-6778-451C-A45F-7011E489F398}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{206E6005-6778-451C-A45F-7011E489F398}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{206E6005-6778-451C-A45F-7011E489F398}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{206E6005-6778-451C-A45F-7011E489F398}.Release|Any CPU.Build.0 = Release|Any CPU
+		{84508BE6-3502-4263-AEED-6DA5DD3751F4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{84508BE6-3502-4263-AEED-6DA5DD3751F4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{84508BE6-3502-4263-AEED-6DA5DD3751F4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{84508BE6-3502-4263-AEED-6DA5DD3751F4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -1,19 +1,18 @@
+using PetAccountSystem.WebAPI.Services.Extensions;
+
+namespace PetAccountSystem.WebAPI;
+
 internal class Program
 {
+    protected Program() { }
+
     private static void Main(string[] args)
     {
-        var builder = WebApplication.CreateBuilder(args);
+        var app = WebApplication
+            .CreateBuilder(args)
+            .RegisterServices()
+            .Build();
 
-        // Add services to the container.
-
-        builder.Services.AddControllers();
-        // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
-        builder.Services.AddEndpointsApiExplorer();
-        builder.Services.AddSwaggerGen();
-
-        var app = builder.Build();
-
-        // Configure the HTTP request pipeline.
         if (app.Environment.IsDevelopment())
         {
             app.UseSwagger();

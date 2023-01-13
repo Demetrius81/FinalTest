@@ -11,4 +11,10 @@
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.4.0" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\PetAccountSystem.DAL\PetAccountSystem.DAL.csproj" />
+    <ProjectReference Include="..\PetAccountSystem.Interfaces\PetAccountSystem.Interfaces.csproj" />
+    <ProjectReference Include="..\PetAccountSystem.Models\PetAccountSystem.Models.csproj" />
+  </ItemGroup>
+
 </Project>
