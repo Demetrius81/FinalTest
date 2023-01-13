@@ -1,7 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using PetAccountSystem.Models.Models;
 
-namespace PetAccountSystem.DAL.Context;
+namespace PetAccountSystem.WebAPI.Context;
 public class PetDBContext : DbContext
 {
 	public DbSet<Pet> Pets { get; set; }

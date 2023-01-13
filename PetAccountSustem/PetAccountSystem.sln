@@ -15,10 +15,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PetAccountSystem.App.Client
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PetAccountSystem.TestConsole", "PetAccountSystem.TestConsole\PetAccountSystem.TestConsole.csproj", "{4A1A0ACA-240E-4C45-882F-ACCBE93DDEB8}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PetAccountSystem.DAL", "PetAccountSystem.DAL\PetAccountSystem.DAL.csproj", "{206E6005-6778-451C-A45F-7011E489F398}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PetAccountSystem.DAL.Sqlite", "PetAccountSystem.DAL.Sqlite\PetAccountSystem.DAL.Sqlite.csproj", "{84508BE6-3502-4263-AEED-6DA5DD3751F4}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -49,14 +45,6 @@ Global
 		{4A1A0ACA-240E-4C45-882F-ACCBE93DDEB8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4A1A0ACA-240E-4C45-882F-ACCBE93DDEB8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4A1A0ACA-240E-4C45-882F-ACCBE93DDEB8}.Release|Any CPU.Build.0 = Release|Any CPU
-		{206E6005-6778-451C-A45F-7011E489F398}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{206E6005-6778-451C-A45F-7011E489F398}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{206E6005-6778-451C-A45F-7011E489F398}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{206E6005-6778-451C-A45F-7011E489F398}.Release|Any CPU.Build.0 = Release|Any CPU
-		{84508BE6-3502-4263-AEED-6DA5DD3751F4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{84508BE6-3502-4263-AEED-6DA5DD3751F4}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{84508BE6-3502-4263-AEED-6DA5DD3751F4}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{84508BE6-3502-4263-AEED-6DA5DD3751F4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

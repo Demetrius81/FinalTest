@@ -11,6 +11,7 @@ internal class Program
         var app = WebApplication
             .CreateBuilder(args)
             .RegisterServices()
+            .RegisterDbContext()
             .Build();
 
         if (app.Environment.IsDevelopment())
