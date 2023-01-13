@@ -21,13 +21,17 @@
       </counter>
       <counter>
         <item-type stereotype="interface" type-id="uml-interface-classifier" type="Interface" />
-        <value>1</value>
+        <value>2</value>
+      </counter>
+      <counter>
+        <item-type type-id="class" type="Class" />
+        <value>2</value>
       </counter>
     </entity-names>
     <entity-ids>
       <counter>
         <item-type type-id="group" type="Group" />
-        <value>161</value>
+        <value>187</value>
       </counter>
       <counter>
         <item-type type-id="actor" type="Actor" />
@@ -47,11 +51,15 @@
       </counter>
       <counter>
         <item-type type-id="uml-interface-classifier" type="Interface" />
-        <value>2</value>
+        <value>3</value>
       </counter>
       <counter>
         <item-type type-id="property" type="Property" />
-        <value>2</value>
+        <value>3</value>
+      </counter>
+      <counter>
+        <item-type type-id="class" type="Class" />
+        <value>3</value>
       </counter>
     </entity-ids>
     <diagrams>
@@ -65,7 +73,7 @@
       </counter>
       <counter>
         <type>SoftwareIdeasModeler.Core.Diagrams.UmlDiagrams.UmlClassDiagram</type>
-        <value>1</value>
+        <value>2</value>
       </counter>
     </diagrams>
     <fields>
@@ -77,6 +85,7 @@
   </counters>
   <alias-groups />
   <management uid="md-385414e72c5f4bcdb62ed05dbed3cdba" name="" task-id-sequence="0">
+    <working-schedule uid="ws-57f402537e6b4b83b94aaffed2b44f4d" hours="8" monday="8" tuesday="8" wednesday="8" thursday="8" friday="8" saturday="0" sunday="0" />
     <persons>
       <person id="">
         <first-name />
@@ -86,6 +95,7 @@
         <phone-number />
         <description />
         <color>#00000000</color>
+        <working-schedule uid="ws-46187c7f909249958c22002018678ba7" hours="8" monday="8" tuesday="8" wednesday="8" thursday="8" friday="8" saturday="0" sunday="0" />
       </person>
     </persons>
     <teams />
@@ -120,7 +130,7 @@
       </meta>
       <abstract-items />
       <sub-models />
-      <diagram type="uml-usecase" id="p17d4fbfa57db4fd68c8959563715a65f_692387943" name="UseCaseDiagram" order-index="1" uid="" auto-routed-paths="false" default-line-style="default">
+      <diagram type="uml-usecase" id="p17d4fbfa57db4fd68c8959563715a65f_692387943" name="UseCaseDiagram" order-index="1" uid="" name-style="" auto-routed-paths="false" default-line-style="default">
         <style>
           <background-color index="1" color="#FFFFFFFF" />
           <background-color index="2" color="#FFFFFFFF" />
@@ -137,7 +147,7 @@
           <version />
         </meta>
         <abstract-items>
-          <item id="7392827cb32b4aada899228961b5bf42" cid="UC001" type="use-case" name="Добавление нового питомца" creator="" creation-date="01/13/2023 13:08:05">
+          <item id="7392827cb32b4aada899228961b5bf42" cid="UC001" type="use-case" name="Добавление нового питомца" creator="" creation-date="01/13/2023 13:08:05" visibility="undefined">
             <use-case>
               <stakeholders />
             </use-case>
@@ -148,12 +158,12 @@
           <item id="b618506d310640a39343b085c5641e6f" cid="ELEM003" type="universal-connector" creator="" creation-date="01/13/2023 13:11:44" from="f0f4632aa3634ad1bd52a0340554bfa5" to="7392827cb32b4aada899228961b5bf42">
             <connector end-cap="arrow" />
           </item>
+          <item id="f0f4632aa3634ad1bd52a0340554bfa5" cid="AC001" type="actor" name="User" creator="" creation-date="01/13/2023 13:07:39" visibility="undefined" />
           <item id="di9d17e0d367ed4e448128aa4f9bac757a2371" cid="UC002" type="use-case" name="Просмотр питомцев" creator="" creation-date="01/13/2023 13:08:05" visibility="undefined">
             <use-case>
               <stakeholders />
             </use-case>
           </item>
-          <item id="f0f4632aa3634ad1bd52a0340554bfa5" cid="AC001" type="actor" name="User" creator="" creation-date="01/13/2023 13:07:39" />
           <item id="dia9a90742a25440a89ec3e93e2e19ee821406" cid="UC004" type="use-case" name="Просмотр въючных животных" creator="" creation-date="01/13/2023 13:08:05" visibility="undefined">
             <use-case>
               <stakeholders />
@@ -170,13 +180,13 @@
           <item id="9f5932bb6c594f509c7e50a54bf4fa9a" cid="ELEM002" type="universal-connector" creator="" creation-date="01/13/2023 13:11:38" from="f0f4632aa3634ad1bd52a0340554bfa5" to="di9d17e0d367ed4e448128aa4f9bac757a2371">
             <connector end-cap="arrow" />
           </item>
-          <item id="01ce1ed7ae474a729c66482b634ea06d" cid="ELEM004" type="universal-connector" creator="" creation-date="01/13/2023 13:11:51" from="f0f4632aa3634ad1bd52a0340554bfa5" to="did84c3f0602e045e5811051c192f9ef2b7329">
-            <connector end-cap="arrow" />
-          </item>
           <item id="did84c3f0602e045e5811051c192f9ef2b7329" cid="UC005" type="use-case" name="Удаление питомца" creator="" creation-date="01/13/2023 13:08:05" visibility="undefined">
             <use-case>
               <stakeholders />
             </use-case>
+          </item>
+          <item id="01ce1ed7ae474a729c66482b634ea06d" cid="ELEM004" type="universal-connector" creator="" creation-date="01/13/2023 13:11:51" from="f0f4632aa3634ad1bd52a0340554bfa5" to="did84c3f0602e045e5811051c192f9ef2b7329">
+            <connector end-cap="arrow" />
           </item>
         </abstract-items>
         <layer id="5d26a05f1b0941dea0cb0d1a71227726" name="Default" visible="true" enabled="true" locked="false">
@@ -251,7 +261,7 @@
           </item>
         </layer>
       </diagram>
-      <diagram type="entity-relationship" id="p93312cfa2be349e28f5b387bc81059a5_871655651" name="ERD_diagram" order-index="2" overview-order-index="0" uid="" auto-routed-paths="false" default-line-style="default">
+      <diagram type="entity-relationship" id="p93312cfa2be349e28f5b387bc81059a5_871655651" name="ERD_diagram" order-index="2" overview-order-index="0" uid="" name-style="" auto-routed-paths="false" default-line-style="default">
         <style>
           <background-color index="1" color="#FFFFFFFF" />
           <background-color index="2" color="#FFFFFFFF" />
@@ -286,7 +296,7 @@
           </item>
         </layer>
       </diagram>
-      <diagram type="uml-class" id="p93d7af790fb9409f8c66b61d109818aa_297365246" name="ModelDiagram" order-index="3" overview-order-index="1" uid="" auto-routed-paths="false" default-line-style="default">
+      <diagram type="uml-class" id="p93d7af790fb9409f8c66b61d109818aa_297365246" name="ModelDiagram" order-index="3" overview-order-index="1" uid="" name-style="" auto-routed-paths="false" default-line-style="default">
         <style>
           <background-color index="1" color="#FFFFFFFF" />
           <background-color index="2" color="#FFFFFFFF" />
@@ -298,30 +308,52 @@
           </authors>
           <description />
           <creation-date>01/13/2023 13:36:32</creation-date>
-          <change-date>01/13/2023 13:37:00</change-date>
+          <change-date>01/13/2023 15:25:05</change-date>
+          <revision-count>0</revision-count>
+          <version />
+        </meta>
+        <abstract-items />
+        <layer id="b4fdcf5dcabb49289d6fa7ac547f430a" name="Default" visible="true" enabled="true" locked="false" />
+      </diagram>
+      <diagram type="uml-class" id="p385c9c9e5549427197328522687df180_120884088" name="ClassDiagram2" order-index="4" overview-order-index="2" uid="" auto-routed-paths="false" default-line-style="default">
+        <style>
+          <background-color index="1" color="#FFFFFFFF" />
+          <background-color index="2" color="#FFFFFFFF" />
+          <background-type type="solid" />
+        </style>
+        <meta>
+          <authors>
+            <author> </author>
+          </authors>
+          <description />
+          <creation-date>01/13/2023 15:25:14</creation-date>
+          <change-date>01/13/2023 15:26:08</change-date>
           <revision-count>0</revision-count>
           <version />
         </meta>
         <abstract-items>
-          <item id="2ff81926d9c1463c8c81a6d4f81d3d2e" cid="I001" type="uml-interface-classifier" name="Entity" creator="" creation-date="01/13/2023 13:37:00" visibility="undefined">
+          <item id="d36216a748f945a7aab91e6b3c308bd2" cid="C002" type="class" name="Entity" creation-date="01/13/2023 15:26:08" visibility="public" is-abstract="true">
+            <source-codes>
+              <source-code language="ActionScript" />
+            </source-codes>
+          </item>
+          <item id="f408b999ec954e4d8b58e9f478074a3c" cid="I002" type="uml-interface-classifier" name="IEntity" creation-date="01/13/2023 15:25:43">
             <stereotypes>
               <stereotype name="interface" />
             </stereotypes>
             <stereotype-instances>
-              <stereotype id="2ff81926d9c1463c8c81a6d4f81d3d2e_interface_c" type="interface" ref="" />
+              <stereotype id="f408b999ec954e4d8b58e9f478074a3c_interface_c" type="interface" ref="" />
             </stereotype-instances>
-            <owned-items />
-            <attributes>
-              <attribute id="ad2bd678680c348ca8ac0200ee92af35f919" cid="PROP001" name="Id" creation-date="01/13/2023 13:38:28" property-ref="24d60ad69f9e4ecfa69a4e4a63d2ce79" />
-            </attributes>
-          </item>
-          <item id="24d60ad69f9e4ecfa69a4e4a63d2ce79" cid="PROP001" type="property" name="Id" owner="2ff81926d9c1463c8c81a6d4f81d3d2e" creator="" creation-date="01/13/2023 13:38:28" visibility="public">
-            <structural-feature type="Integer" type-id="Uml.Integer" />
           </item>
         </abstract-items>
-        <layer id="b4fdcf5dcabb49289d6fa7ac547f430a" name="Default" visible="true" enabled="true" locked="false">
-          <item id="2ff81926d9c1463c8c81a6d4f81d3d2e" iid="d44e716594d14ef2aa9eb709a95330e3" creation-date="01/13/2023 13:37:00" order-index="0" type="entity">
-            <layout ax="613" ay="103" awidth="122" aheight="84" x="613" y="103" width="122" height="84" rotation-center="9,38" />
+        <layer id="a88747a48e214da1bf7007b9bdb6b6ba" name="Default" visible="true" enabled="true" locked="false">
+          <item id="f408b999ec954e4d8b58e9f478074a3c" iid="f072f13aac8541ddb8ce2a9f4d8acad4" creation-date="01/13/2023 15:25:43" order-index="0" type="entity">
+            <layout ax="505" ay="91" awidth="231" aheight="175" x="505" y="91" width="231" height="175" />
+            <classifier />
+            <class />
+          </item>
+          <item id="d36216a748f945a7aab91e6b3c308bd2" iid="3de73a1db12e43bdaa46fea9b4bdb93b" show-fields="true" creation-date="01/13/2023 15:26:08" order-index="1" type="entity">
+            <layout ax="482" ay="373" awidth="235" aheight="249" x="482" y="373" width="235" height="249" />
             <classifier />
             <class />
           </item>
