@@ -1,0 +1,332 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<sim-project version="13.80" multi-file="no" uid="simp0fb4f2ba33a74918ad2ad01fd938d37b">
+  <meta>
+    <name>PetAccoutingSystem</name>
+    <authors> </authors>
+    <description />
+  </meta>
+  <counters models="1">
+    <entity-names>
+      <counter>
+        <item-type type-id="actor" type="Actor" />
+        <value>1</value>
+      </counter>
+      <counter>
+        <item-type type-id="use-case" type="Use Case" />
+        <value>1</value>
+      </counter>
+      <counter>
+        <item-type type-id="erd-entity" type="Entity" />
+        <value>1</value>
+      </counter>
+      <counter>
+        <item-type stereotype="interface" type-id="uml-interface-classifier" type="Interface" />
+        <value>1</value>
+      </counter>
+    </entity-names>
+    <entity-ids>
+      <counter>
+        <item-type type-id="group" type="Group" />
+        <value>161</value>
+      </counter>
+      <counter>
+        <item-type type-id="actor" type="Actor" />
+        <value>2</value>
+      </counter>
+      <counter>
+        <item-type type-id="universal-connector" type="Universal Connector" />
+        <value>7</value>
+      </counter>
+      <counter>
+        <item-type type-id="use-case" type="Use Case" />
+        <value>6</value>
+      </counter>
+      <counter>
+        <item-type type-id="erd-entity" type="Entity" />
+        <value>2</value>
+      </counter>
+      <counter>
+        <item-type type-id="uml-interface-classifier" type="Interface" />
+        <value>2</value>
+      </counter>
+      <counter>
+        <item-type type-id="property" type="Property" />
+        <value>2</value>
+      </counter>
+    </entity-ids>
+    <diagrams>
+      <counter>
+        <type>SoftwareIdeasModeler.Core.Diagrams.UmlDiagrams.UmlUseCaseDiagram</type>
+        <value>1</value>
+      </counter>
+      <counter>
+        <type>SoftwareIdeasModeler.Core.Diagrams.Other.EntityRelationshipDiagram</type>
+        <value>1</value>
+      </counter>
+      <counter>
+        <type>SoftwareIdeasModeler.Core.Diagrams.UmlDiagrams.UmlClassDiagram</type>
+        <value>1</value>
+      </counter>
+    </diagrams>
+    <fields>
+      <counter>
+        <type>SoftwareIdeasModeler.Core.DiagramItems.Erd.ErdEntityAttribute</type>
+        <value>5</value>
+      </counter>
+    </fields>
+  </counters>
+  <alias-groups />
+  <management uid="md-385414e72c5f4bcdb62ed05dbed3cdba" name="" task-id-sequence="0">
+    <persons>
+      <person id="">
+        <first-name />
+        <last-name />
+        <role />
+        <e-mail />
+        <phone-number />
+        <description />
+        <color>#00000000</color>
+      </person>
+    </persons>
+    <teams />
+    <sprints />
+    <projects />
+    <modules />
+    <tasks />
+    <to-dos />
+  </management>
+  <glossary id="glsr-5678d5dc13da47cc852bb622d17c9dd9" />
+  <types default="UML">
+    <type-sets>
+      <type-set file="UmlTypes.xml" />
+    </type-sets>
+    <custom-types>
+      <parameters />
+      <types />
+    </custom-types>
+  </types>
+  <items />
+  <models>
+    <model id="p6996f064c7b14fa58a074c29a9284c79_462476415" name="Model1" namespace="" order-index="1">
+      <meta>
+        <authors>
+          <author> </author>
+        </authors>
+        <description />
+        <creation-date>01/13/2023 13:04:42</creation-date>
+        <change-date>01/01/0001 00:00:00</change-date>
+        <revision-count>0</revision-count>
+        <version />
+      </meta>
+      <abstract-items />
+      <sub-models />
+      <diagram type="uml-usecase" id="p17d4fbfa57db4fd68c8959563715a65f_692387943" name="UseCaseDiagram" order-index="1" uid="" auto-routed-paths="false" default-line-style="default">
+        <style>
+          <background-color index="1" color="#FFFFFFFF" />
+          <background-color index="2" color="#FFFFFFFF" />
+          <background-type type="solid" />
+        </style>
+        <meta>
+          <authors>
+            <author> </author>
+          </authors>
+          <description />
+          <creation-date>01/13/2023 13:04:42</creation-date>
+          <change-date>01/13/2023 13:12:08</change-date>
+          <revision-count>0</revision-count>
+          <version />
+        </meta>
+        <abstract-items>
+          <item id="7392827cb32b4aada899228961b5bf42" cid="UC001" type="use-case" name="Добавление нового питомца" creator="" creation-date="01/13/2023 13:08:05">
+            <use-case>
+              <stakeholders />
+            </use-case>
+          </item>
+          <item id="cabbaae7f3e14903b53b976aa0525457" cid="ELEM005" type="universal-connector" creator="" creation-date="01/13/2023 13:12:02" from="di9d17e0d367ed4e448128aa4f9bac757a2371" to="di301e2883ab164502a0f55fcc7154c2b54052">
+            <connector end-cap="arrow" />
+          </item>
+          <item id="b618506d310640a39343b085c5641e6f" cid="ELEM003" type="universal-connector" creator="" creation-date="01/13/2023 13:11:44" from="f0f4632aa3634ad1bd52a0340554bfa5" to="7392827cb32b4aada899228961b5bf42">
+            <connector end-cap="arrow" />
+          </item>
+          <item id="di9d17e0d367ed4e448128aa4f9bac757a2371" cid="UC002" type="use-case" name="Просмотр питомцев" creator="" creation-date="01/13/2023 13:08:05" visibility="undefined">
+            <use-case>
+              <stakeholders />
+            </use-case>
+          </item>
+          <item id="f0f4632aa3634ad1bd52a0340554bfa5" cid="AC001" type="actor" name="User" creator="" creation-date="01/13/2023 13:07:39" />
+          <item id="dia9a90742a25440a89ec3e93e2e19ee821406" cid="UC004" type="use-case" name="Просмотр въючных животных" creator="" creation-date="01/13/2023 13:08:05" visibility="undefined">
+            <use-case>
+              <stakeholders />
+            </use-case>
+          </item>
+          <item id="d80489458e2443f5bcdbc58af6f0f115" cid="ELEM006" type="universal-connector" creator="" creation-date="01/13/2023 13:12:08" from="di9d17e0d367ed4e448128aa4f9bac757a2371" to="dia9a90742a25440a89ec3e93e2e19ee821406">
+            <connector end-cap="arrow" />
+          </item>
+          <item id="di301e2883ab164502a0f55fcc7154c2b54052" cid="UC003" type="use-case" name="Просмотр домашних животных" creator="" creation-date="01/13/2023 13:08:05" visibility="undefined">
+            <use-case>
+              <stakeholders />
+            </use-case>
+          </item>
+          <item id="9f5932bb6c594f509c7e50a54bf4fa9a" cid="ELEM002" type="universal-connector" creator="" creation-date="01/13/2023 13:11:38" from="f0f4632aa3634ad1bd52a0340554bfa5" to="di9d17e0d367ed4e448128aa4f9bac757a2371">
+            <connector end-cap="arrow" />
+          </item>
+          <item id="01ce1ed7ae474a729c66482b634ea06d" cid="ELEM004" type="universal-connector" creator="" creation-date="01/13/2023 13:11:51" from="f0f4632aa3634ad1bd52a0340554bfa5" to="did84c3f0602e045e5811051c192f9ef2b7329">
+            <connector end-cap="arrow" />
+          </item>
+          <item id="did84c3f0602e045e5811051c192f9ef2b7329" cid="UC005" type="use-case" name="Удаление питомца" creator="" creation-date="01/13/2023 13:08:05" visibility="undefined">
+            <use-case>
+              <stakeholders />
+            </use-case>
+          </item>
+        </abstract-items>
+        <layer id="5d26a05f1b0941dea0cb0d1a71227726" name="Default" visible="true" enabled="true" locked="false">
+          <item id="f0f4632aa3634ad1bd52a0340554bfa5" iid="ded1471c0718417187eb7181fa3ac3ed" creation-date="01/13/2023 13:07:39" order-index="0" type="entity">
+            <layout name-position="0,10" name-anchor="bottom" auto-anchor="true" label-attached="false" ax="124" ay="259" awidth="50" aheight="100" x="124" y="259" width="50" height="120" />
+            <actor />
+          </item>
+          <item id="7392827cb32b4aada899228961b5bf42" iid="1a501c631ed44bd789fe62bd303ab62d" creation-date="01/13/2023 13:08:05" order-index="1" type="entity">
+            <layout ax="311" ay="110" awidth="142" aheight="89" x="311" y="110" width="142" height="72" />
+            <use-case />
+          </item>
+          <item id="di9d17e0d367ed4e448128aa4f9bac757a2371" iid="d5f39cb9ef0d48109d5bf555244b40f0" creation-date="01/13/2023 13:08:05" order-index="1" type="entity">
+            <layout ax="311" ay="259" awidth="142" aheight="89" x="311" y="259" width="142" height="124" />
+            <use-case />
+          </item>
+          <item id="di301e2883ab164502a0f55fcc7154c2b54052" iid="b522782a5bef4e439bec971f9c088ad3" creation-date="01/13/2023 13:08:05" order-index="1" type="entity">
+            <layout ax="556" ay="184.5" awidth="142" aheight="89" x="556" y="184.5" width="142" height="72" />
+            <use-case />
+          </item>
+          <item id="dia9a90742a25440a89ec3e93e2e19ee821406" iid="96e5ca6262d04de1876270ceebe36eb8" creation-date="01/13/2023 13:08:05" order-index="1" type="entity">
+            <layout ax="556" ay="333.5" awidth="142" aheight="89" x="556" y="333.5" width="142" height="72" />
+            <use-case />
+          </item>
+          <item id="did84c3f0602e045e5811051c192f9ef2b7329" iid="dcedc3aedfd342259a5d810af80106ee" creation-date="01/13/2023 13:08:05" order-index="1" type="entity">
+            <layout ax="311" ay="408" awidth="142" aheight="89" x="311" y="408" width="142" height="72" />
+            <use-case />
+          </item>
+          <item id="9f5932bb6c594f509c7e50a54bf4fa9a" iid="3ef76840161a495f975cf289cb14e402" creation-date="01/13/2023 13:11:38" order-index="2" type="relation">
+            <layout line-style="oblique" lock-start-point="true" lock-end-point="true" lock-to-fields="false" auto-path="" x1="174" y1="309" x2="311" y2="303" start-border-pos="0.375" end-border-pos="0.876404494382023" start-local-pos="50" end-local-pos="44" name-position="0,20">
+              <points>
+                <point x="174" y="309" />
+                <point x="311" y="303" />
+              </points>
+            </layout>
+            <relation from="f0f4632aa3634ad1bd52a0340554bfa5" from-iid="ded1471c0718417187eb7181fa3ac3ed" to="di9d17e0d367ed4e448128aa4f9bac757a2371" to-iid="d5f39cb9ef0d48109d5bf555244b40f0" />
+          </item>
+          <item id="b618506d310640a39343b085c5641e6f" iid="d17837d3f5134ee78c32f4f8a69ba61c" creation-date="01/13/2023 13:11:44" order-index="3" type="relation">
+            <layout line-style="oblique" lock-start-point="true" lock-end-point="true" lock-to-fields="false" auto-path="" x1="174" y1="309" x2="311" y2="154" start-border-pos="0.375" end-border-pos="0.876404494382023" start-local-pos="50" end-local-pos="44" name-position="0,20">
+              <points>
+                <point x="174" y="309" />
+                <point x="311" y="154" />
+              </points>
+            </layout>
+            <relation from="f0f4632aa3634ad1bd52a0340554bfa5" from-iid="ded1471c0718417187eb7181fa3ac3ed" to="7392827cb32b4aada899228961b5bf42" to-iid="1a501c631ed44bd789fe62bd303ab62d" />
+          </item>
+          <item id="01ce1ed7ae474a729c66482b634ea06d" iid="af548d375f2049e1b296f1562b8a5844" creation-date="01/13/2023 13:11:51" order-index="4" type="relation">
+            <layout line-style="oblique" lock-start-point="true" lock-end-point="true" lock-to-fields="false" auto-path="" x1="174" y1="309" x2="311" y2="452" start-border-pos="0.375" end-border-pos="0.876404494382023" start-local-pos="50" end-local-pos="44" name-position="0,20">
+              <points>
+                <point x="174" y="309" />
+                <point x="311" y="452" />
+              </points>
+            </layout>
+            <relation from="f0f4632aa3634ad1bd52a0340554bfa5" from-iid="ded1471c0718417187eb7181fa3ac3ed" to="did84c3f0602e045e5811051c192f9ef2b7329" to-iid="dcedc3aedfd342259a5d810af80106ee" />
+          </item>
+          <item id="cabbaae7f3e14903b53b976aa0525457" iid="520086a8a7e14d698d1599516b04a560" creation-date="01/13/2023 13:12:02" order-index="5" type="relation">
+            <layout line-style="oblique" lock-start-point="true" lock-end-point="true" lock-to-fields="false" auto-path="" x1="452" y1="304" x2="556" y2="229" start-border-pos="0.376404494382023" end-border-pos="0.875" start-local-pos="45" end-local-pos="44.5" name-position="0,20">
+              <points>
+                <point x="452" y="304" />
+                <point x="556" y="229" />
+              </points>
+            </layout>
+            <relation from="di9d17e0d367ed4e448128aa4f9bac757a2371" from-iid="d5f39cb9ef0d48109d5bf555244b40f0" to="di301e2883ab164502a0f55fcc7154c2b54052" to-iid="b522782a5bef4e439bec971f9c088ad3" />
+          </item>
+          <item id="d80489458e2443f5bcdbc58af6f0f115" iid="2451cf8003ef4313b69f33015bb7e499" creation-date="01/13/2023 13:12:08" order-index="6" type="relation">
+            <layout line-style="oblique" lock-start-point="true" lock-end-point="true" lock-to-fields="false" auto-path="" x1="452" y1="304" x2="556" y2="378" start-border-pos="0.376404494382023" end-border-pos="0.875" start-local-pos="45" end-local-pos="44.5" name-position="0,20">
+              <points>
+                <point x="452" y="304" />
+                <point x="556" y="378" />
+              </points>
+            </layout>
+            <relation from="di9d17e0d367ed4e448128aa4f9bac757a2371" from-iid="d5f39cb9ef0d48109d5bf555244b40f0" to="dia9a90742a25440a89ec3e93e2e19ee821406" to-iid="96e5ca6262d04de1876270ceebe36eb8" />
+          </item>
+        </layer>
+      </diagram>
+      <diagram type="entity-relationship" id="p93312cfa2be349e28f5b387bc81059a5_871655651" name="ERD_diagram" order-index="2" overview-order-index="0" uid="" auto-routed-paths="false" default-line-style="default">
+        <style>
+          <background-color index="1" color="#FFFFFFFF" />
+          <background-color index="2" color="#FFFFFFFF" />
+          <background-type type="solid" />
+        </style>
+        <meta>
+          <authors>
+            <author> </author>
+          </authors>
+          <description />
+          <creation-date>01/13/2023 13:13:03</creation-date>
+          <change-date>01/13/2023 13:13:08</change-date>
+          <revision-count>0</revision-count>
+          <version />
+        </meta>
+        <abstract-items>
+          <item id="0e4a2d8991fa4d40bd03388655c62b71" cid="ENT001" type="erd-entity" name="Pet" creator="" creation-date="01/13/2023 13:13:08">
+            <entity description="" />
+            <attributes>
+              <attribute uid="a9ebb9808e52f408983a8d4d3bf11933a428" cid="EA001" name="Id" type="Integer" type-id="Uml.Integer" type-size="" foreign-key="false" primary-key="true" nullable="false" description="" default-value="" auto-increment="true" creation-date="01/13/2023 13:14:59" />
+              <attribute uid="a811f49e114334597b12327d1c77a134f62" cid="EA002" name="KindOfAnimal" type="String" type-id="Uml.String" type-size="" foreign-key="false" primary-key="false" nullable="false" description="" default-value="" auto-increment="false" creation-date="01/13/2023 13:20:19" />
+              <attribute uid="a48d0d4be6f184a56a3afa25c885da2a5330" cid="EA003" name="IsPackAnimal" type="Boolean" type-id="Uml.Boolean" type-size="" foreign-key="false" primary-key="false" nullable="false" description="" default-value="" auto-increment="false" creation-date="01/13/2023 13:22:07" />
+              <attribute uid="a14a5878c22794db7a6b6dddd81e13964259" cid="EA004" name="CountAnimals" type="Integer" type-id="Uml.Integer" type-size="" foreign-key="false" primary-key="false" nullable="false" description="" default-value="" auto-increment="false" creation-date="01/13/2023 13:22:49" />
+            </attributes>
+            <indexes />
+          </item>
+        </abstract-items>
+        <layer id="15afa4da2e1449cbad005dfa1ebf670d" name="Default" visible="true" enabled="true" locked="false">
+          <item id="0e4a2d8991fa4d40bd03388655c62b71" iid="db16f342ba164707a605fe46f4813eba" creation-date="01/13/2023 13:13:08" order-index="0" type="entity">
+            <layout ax="171" ay="102" awidth="281" aheight="197" x="171" y="102" width="281" height="197" rotation-center="-70.5,-18.5" />
+            <erd-entity show-nullability="true" />
+          </item>
+        </layer>
+      </diagram>
+      <diagram type="uml-class" id="p93d7af790fb9409f8c66b61d109818aa_297365246" name="ModelDiagram" order-index="3" overview-order-index="1" uid="" auto-routed-paths="false" default-line-style="default">
+        <style>
+          <background-color index="1" color="#FFFFFFFF" />
+          <background-color index="2" color="#FFFFFFFF" />
+          <background-type type="solid" />
+        </style>
+        <meta>
+          <authors>
+            <author> </author>
+          </authors>
+          <description />
+          <creation-date>01/13/2023 13:36:32</creation-date>
+          <change-date>01/13/2023 13:37:00</change-date>
+          <revision-count>0</revision-count>
+          <version />
+        </meta>
+        <abstract-items>
+          <item id="2ff81926d9c1463c8c81a6d4f81d3d2e" cid="I001" type="uml-interface-classifier" name="Entity" creator="" creation-date="01/13/2023 13:37:00" visibility="undefined">
+            <stereotypes>
+              <stereotype name="interface" />
+            </stereotypes>
+            <stereotype-instances>
+              <stereotype id="2ff81926d9c1463c8c81a6d4f81d3d2e_interface_c" type="interface" ref="" />
+            </stereotype-instances>
+            <owned-items />
+            <attributes>
+              <attribute id="ad2bd678680c348ca8ac0200ee92af35f919" cid="PROP001" name="Id" creation-date="01/13/2023 13:38:28" property-ref="24d60ad69f9e4ecfa69a4e4a63d2ce79" />
+            </attributes>
+          </item>
+          <item id="24d60ad69f9e4ecfa69a4e4a63d2ce79" cid="PROP001" type="property" name="Id" owner="2ff81926d9c1463c8c81a6d4f81d3d2e" creator="" creation-date="01/13/2023 13:38:28" visibility="public">
+            <structural-feature type="Integer" type-id="Uml.Integer" />
+          </item>
+        </abstract-items>
+        <layer id="b4fdcf5dcabb49289d6fa7ac547f430a" name="Default" visible="true" enabled="true" locked="false">
+          <item id="2ff81926d9c1463c8c81a6d4f81d3d2e" iid="d44e716594d14ef2aa9eb709a95330e3" creation-date="01/13/2023 13:37:00" order-index="0" type="entity">
+            <layout ax="613" ay="103" awidth="122" aheight="84" x="613" y="103" width="122" height="84" rotation-center="9,38" />
+            <classifier />
+            <class />
+          </item>
+        </layer>
+      </diagram>
+    </model>
+  </models>
+</sim-project>
