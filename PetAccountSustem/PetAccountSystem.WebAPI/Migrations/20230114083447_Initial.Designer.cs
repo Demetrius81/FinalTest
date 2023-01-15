@@ -3,14 +3,14 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using PetAccountSystem.WebAPI.Context;
+using PetAccountSystem.WebAPI.Data.Context;
 
 #nullable disable
 
 namespace PetAccountSystem.WebAPI.Migrations
 {
     [DbContext(typeof(PetDBContext))]
-    [Migration("20230113160731_Initial")]
+    [Migration("20230114083447_Initial")]
     partial class Initial
     {
         /// <inheritdoc />
