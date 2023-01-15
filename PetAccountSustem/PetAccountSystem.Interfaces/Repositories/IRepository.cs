@@ -8,5 +8,5 @@ public interface IRepository<T> where T : class, IEntity
     int Count();
     int Add(T item);
     bool Update(T item);
-    bool Delete(T item);
+    T? Delete(T item);
 }
