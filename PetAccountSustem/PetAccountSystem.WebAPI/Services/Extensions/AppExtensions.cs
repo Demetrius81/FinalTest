@@ -1,5 +1,8 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using PetAccountSystem.WebAPI.Context;
+using PetAccountSystem.Interfaces.Repositories;
+using PetAccountSystem.WebAPI.Data;
+using PetAccountSystem.WebAPI.Data.Context;
+using PetAccountSystem.WebAPI.Services.Repository;
 using System.Runtime.CompilerServices;
 
 namespace PetAccountSystem.WebAPI.Services.Extensions;
@@ -11,6 +14,7 @@ internal static class AppExtensions
         builder.Services.AddControllers();
         builder.Services.AddEndpointsApiExplorer();
         builder.Services.AddSwaggerGen();
+        builder.Services.AddScoped(typeof(IRepositoryAsync<>), typeof(EntityRepository<>));
 
         return builder;
     }
@@ -19,9 +23,8 @@ internal static class AppExtensions
     {
         var connectionString = builder.Configuration.GetConnectionString("Sqlite");
 
-
         builder.Services.AddDbContext<PetDBContext>(opt => opt.UseSqlite(connectionString));
-
+        builder.Services.AddTransient<AppDbInitializer>();
 
         return builder;
     }

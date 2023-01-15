@@ -349,3 +349,5 @@ MigrationBackup/
 # Ionide (cross platform F# VS Code tools) working folder
 .ionide/
 /PetAccountSustem/PetAccountSystem.WebAPI/PetAccounts.db
+/PetAccountSustem/PetAccountSystem.WebAPI/PetAccounts.db-shm
+/PetAccountSustem/PetAccountSystem.WebAPI/PetAccounts.db-wal
