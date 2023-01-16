@@ -27,17 +27,34 @@
                 <ProgressBar Width="120" Height="14" Value="30"/>
             </StatusBarItem>
         </StatusBar>
-        <TabControl>
-            <TabItem Header="Просмотр животных питомника">
-                <Grid>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="1*"/>
-                        <ColumnDefinition Width="2*"/>
-                    </Grid.ColumnDefinitions>
-                    <GridSplitter Grid.Column="0" HorizontalAlignment="Right" Width="4"/>
-                </Grid>
-            </TabItem>
-            <TabItem Header="Операции с животными"></TabItem>
-        </TabControl>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="2*"/>
+            </Grid.ColumnDefinitions>
+            <GridSplitter Grid.Column="0" HorizontalAlignment="Right" Width="4"/>
+            <StackPanel Grid.Column="0" Orientation="Vertical">
+                <GroupBox x:Name="SelectShowOption" Header="Выбор режима отображения" Margin="2">
+                    <StackPanel>
+                        <RadioButton GroupName="Select" Content="Все питомцы" IsChecked="True" Command=""/>
+                        <RadioButton GroupName="Select" Content="Домашние питомцы" IsChecked="False" Command=""/>
+                        <RadioButton GroupName="Select" Content="Въючные питомцы" IsChecked="False" Command=""/>
+                    </StackPanel>
+                </GroupBox>
+                <Button Content="Добавить питомца" Command="" Margin="2, 10, 2, 2"/>
+                <Button Content="Удалить питомца" Command="" Margin="2"/>
+            </StackPanel>
+            <Grid Background="Lavender" Grid.Column="1">
+                <ListView Name="petList" ItemsSource="{Binding Pets}" >
+                    <ListView.View>
+                        <GridView>
+                            <GridViewColumn DisplayMemberBinding="{Binding Path=KindOfAnimal}" Width="200">Вид питомца</GridViewColumn>
+                            <GridViewColumn DisplayMemberBinding="{Binding Path=IsPackAnimal}" Width="150">Питомец въючный</GridViewColumn>
+                            <GridViewColumn DisplayMemberBinding="{Binding Path=Count}">Количество</GridViewColumn>
+                        </GridView>
+                    </ListView.View>
+                </ListView>
+            </Grid>
+        </Grid>
     </DockPanel>
 </Window>

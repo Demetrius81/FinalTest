@@ -8,7 +8,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Services\" />
+    <ProjectReference Include="..\PetAccountSystem.Models\PetAccountSystem.Models.csproj" />
   </ItemGroup>
 
 </Project>
