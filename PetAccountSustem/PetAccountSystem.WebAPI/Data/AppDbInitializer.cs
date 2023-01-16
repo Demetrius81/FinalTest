@@ -44,7 +44,7 @@ public class AppDbInitializer
         if (!await this._dbContext.Pets.AnyAsync(cancel).ConfigureAwait(false))
         {
             var rnd = new Random();
-            var pets = Enumerable.Range(1, 10).Select(p => new Pet
+            var pets = Enumerable.Range(1, 20).Select(p => new Pet
             {
                 KindOfAnimal = $"Kind of animal {p}",
                 IsPackAnimal = p % 2 == 0,

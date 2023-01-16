@@ -1,49 +1,36 @@
 ﻿using PetAccountSystem.AppWPF.Infrastructure.Commands;
+using PetAccountSystem.AppWPF.Services;
 using PetAccountSystem.AppWPF.ViewModels.Base;
+using PetAccountSystem.Client.Pets;
 using PetAccountSystem.Models.Models;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
+using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
 
 namespace PetAccountSystem.AppWPF.ViewModels;
-internal class MainWindowViewModel : ViewModel
+internal class MainWindowViewModel : TitledViewModel
 {
-    public ObservableCollection<Pet> Pets { get; set; } = new ObservableCollection<Pet>()
+    private readonly DomainLogic _domainLogic;
+
+    #region Pets
+
+    private ICollection<Pet> _pets = new List<Pet>() { new Pet() };
+
+    /// <summary>Список питомцев</summary>
+    public ICollection<Pet> Pets
     {
-        new Pet()
-        {
-            Id = 1,
-            KindOfAnimal = "Horse",
-            IsPackAnimal = true,
-            Count = 5,
-        },
-        new Pet()
-        {
-            Id = 2,
-            KindOfAnimal = "Cat",
-            IsPackAnimal = false,
-            Count = 7,
-        }
-    };
-
-    #region Title
-
-    private string _title = "Система учета питомника";
-
-    /// <summary>Заголовок окна</summary>
-    public string Title
-    {
-        get => _title;
-        set => Set(ref _title, value);
+        get => _pets;
+        set => Set(ref _pets, value);
     }
 
     #endregion
-
+      
     #region Status
 
     private string _status = "Готово!";
@@ -57,31 +44,57 @@ internal class MainWindowViewModel : ViewModel
 
     #endregion
 
-    //#region CheckStatus
+    #region ShowAll
 
-    //private bool _checkStatus;
+    private bool _showAll = false;
 
-    ///// <summary>Статус программы</summary>
-    //public bool CheckStatus
-    //{
-    //    get => _checkStatus;
-    //    set => Set(ref _checkStatus, value);
-    //}
+    /// <summary>Показать всех питомцев</summary>
+    public bool ShowAll
+    {
+        get => _showAll;
+        set => Set(ref _showAll, value);
+    }
 
-    //#endregion
+    #endregion
 
-    //#region TestContent
+    #region ShowHome
 
-    //private string _testContent = "Готово!";
+    private bool _showHome;
 
-    ///// <summary>Статус программы</summary>
-    //public string TestContent
-    //{
-    //    get => _testContent;
-    //    set => Set(ref _testContent, value);
-    //}
+    /// <summary>Показать домашних питомцев</summary>
+    public bool ShowHome
+    {
+        get => _showHome;
+        set => Set(ref _showHome, value);
+    }
 
-    //#endregion
+    #endregion
+
+    #region ShowPack
+
+    private bool _showPack;
+
+    /// <summary>Показать въючных питомцев</summary>
+    public bool ShowPack
+    {
+        get => _showPack;
+        set => Set(ref _showPack, value);
+    }
+
+    #endregion
+
+    #region TotalPets
+
+    private int _totalPets;
+
+    /// <summary>Всего питомцев</summary>
+    public int TotalPets
+    {
+        get => _totalPets;
+        set => Set(ref _totalPets, value);
+    }
+
+    #endregion
 
     #region Commands
 
@@ -98,35 +111,85 @@ internal class MainWindowViewModel : ViewModel
 
     #endregion
 
-    //#region CheckBoxStatusChangedCommand
+    #region SwichShowStatusCommand
 
-    //public ICommand CheckBoxStatusChangedCommand { get; }
+    public ICommand SwichShowStatusCommand { get; }
 
-    //private void OnCheckBoxStatusChangedCommandExecuted(object p)
-    //{
-    //    if (this._checkStatus)
-    //    {
-    //        TestContent = "Checked";
-    //    }
-    //    else
-    //    {
-    //        TestContent = "Unchecked";
-    //    }
-    //}
+    private async void OnSwichShowStatusCommandExecuted(object p)
+    {
+        var temp = true switch
+        {
+            true when _showAll => await _domainLogic.GetPetsAsync().ConfigureAwait(true),
+            true when _showHome => await _domainLogic.GetPetsHomeAsync().ConfigureAwait(true),
+            true when _showPack => await _domainLogic.GetPetsPackAsync().ConfigureAwait(true),
+            _ => Enumerable.Empty<Pet>()
+        };
 
-    //private bool CanCheckBoxStatusChangedCommandExecute(object p) => true;
+        if (temp is null || temp == Enumerable.Empty<Pet>())
+        {
+            TotalPets = 0;
+            Pets = new List<Pet>() { new Pet() };
+            Status = "Нет связи с сервером!";
+            return;
+        }
 
-    //#endregion
+        TotalPets = temp.Sum(i => i.Count);
+        Pets = temp.ToList();
+        Status = "Готов!";
+    }
+
+    private bool CanSwichShowStatusCommandExecute(object p) => true;
 
     #endregion
 
-    public MainWindowViewModel()
+    #region AddWindowCallCommand
+
+    public ICommand AddWindowCallCommand { get; }
+
+    private void OnAddWindowCallCommandExecuted(object p)
     {
+        ;
+    }
+
+    private bool CanAddWindowCallCommandExecute(object p) => true;
+
+    #endregion
+
+    #region RemoveWindowCallCommand
+
+    public ICommand RemoveWindowCallCommand { get; }
+
+    private void OnRemoveWindowCallCommandExecuted(object p)
+    {
+        ;
+    }
+
+    private bool CanRemoveWindowCallCommandExecute(object p)
+    {
+        if (Pets == Enumerable.Empty<Pet>() || Pets.Count == 1 && (Pets.FirstOrDefault() is null || Pets.FirstOrDefault()?.Id == 0))
+        {
+            return false;
+        }
+
+        return true;
+    } 
+
+    #endregion
+
+    #endregion
+
+    public MainWindowViewModel(DomainLogic domainLogic)
+    {
+        Title = "Система учета питомника";
+
+        this._domainLogic = domainLogic;
+
         #region Commands
 
         CloseApplicationCommand = new LambdaCommand(OnCloseApplicationCommandExecuted, CanCloseApplicationCommandExecute);
-
-        //CheckBoxStatusChangedCommand = new LambdaCommand(OnCheckBoxStatusChangedCommandExecuted, CanCheckBoxStatusChangedCommandExecute);
+        SwichShowStatusCommand = new LambdaCommand(OnSwichShowStatusCommandExecuted, CanSwichShowStatusCommandExecute);
+        AddWindowCallCommand = new LambdaCommand(OnAddWindowCallCommandExecuted, CanAddWindowCallCommandExecute);
+        RemoveWindowCallCommand = new LambdaCommand(OnRemoveWindowCallCommandExecuted, CanRemoveWindowCallCommandExecute);
 
         #endregion
 

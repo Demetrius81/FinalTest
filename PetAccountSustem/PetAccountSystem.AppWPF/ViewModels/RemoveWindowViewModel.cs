@@ -6,18 +6,10 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace PetAccountSystem.AppWPF.ViewModels;
-internal class RemoveWindowViewModel : ViewModel
+internal class RemoveWindowViewModel : TitledViewModel
 {
-    #region Title
-
-    private string _title = "Удаление питомца";
-
-    /// <summary>Заголовок окна</summary>
-    public string Title
-    {
-        get => _title;
-        set => Set(ref _title, value);
-    }
-
-    #endregion
+	public RemoveWindowViewModel()
+	{
+		Title = "Удалить питомца";
+	}
 }

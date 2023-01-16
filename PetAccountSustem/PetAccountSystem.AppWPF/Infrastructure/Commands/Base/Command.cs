@@ -10,7 +10,17 @@ internal abstract class Command : ICommand
         remove => CommandManager.RequerySuggested -= value;
     }
 
-    public abstract bool CanExecute(object? parameter);
+    bool ICommand.CanExecute(object? parameter) => CanExecute(parameter);
 
-    public abstract void Execute(object? parameter);
+    void ICommand.Execute(object? parameter)
+    {
+        if (((ICommand)this).CanExecute(parameter))
+        {
+            Execute(parameter);
+        }
+    }
+
+    protected virtual bool CanExecute(object? parameter) => true;
+
+    protected abstract void Execute(object? parameter);
 }
