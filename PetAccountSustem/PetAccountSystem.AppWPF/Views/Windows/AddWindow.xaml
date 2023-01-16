@@ -6,8 +6,34 @@
         xmlns:local="clr-namespace:PetAccountSystem.AppWPF.Views.Windows"
         xmlns:vm="clr-namespace:PetAccountSystem.AppWPF.ViewModels"
         mc:Ignorable="d"
-        Title="AddWindow" Height="450" Width="800">
-    <Grid>
-        
-    </Grid>
+        Title="{Binding Title}" Height="185" Width="260">
+    <Window.DataContext>
+        <vm:AddWindowViewModel/>
+    </Window.DataContext>
+    <StackPanel>
+        <WrapPanel>
+            <TextBox Text="0" Height="20" Width="50" Margin="2" />
+            <TextBlock Text="Количество" Margin="2"/>
+        </WrapPanel>
+        <GroupBox x:Name="SelectShowOption" Header="Выбор режима отображения" Margin="2">
+            <StackPanel>
+                <RadioButton GroupName="Select" Content="Домашние питомцы" IsChecked="True" Command=""/>
+                <RadioButton GroupName="Select" Content="Въючные питомцы" IsChecked="False" Command=""/>
+            </StackPanel>
+        </GroupBox>
+        <StackPanel Orientation="Vertical">
+            <Grid>
+
+                <StackPanel Orientation="Horizontal">
+
+                    <ComboBox Height="20" Width="150" Margin="2">
+
+                    </ComboBox>
+                    <Button Content="Добавить вид" Margin="2" Width="100"/>
+                </StackPanel>
+            </Grid>
+            <Button Content="Добавить питомца" Margin="2" Width="254" HorizontalAlignment="Left"/>
+            <Button Content="Отмена" Margin="2" Width="254" HorizontalAlignment="Left"/>
+        </StackPanel>
+    </StackPanel>
 </Window>
