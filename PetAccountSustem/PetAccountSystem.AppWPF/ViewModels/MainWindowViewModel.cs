@@ -1,4 +1,5 @@
 ﻿using PetAccountSystem.AppWPF.Infrastructure.Commands;
+using PetAccountSystem.AppWPF.Models;
 using PetAccountSystem.AppWPF.Services;
 using PetAccountSystem.AppWPF.ViewModels.Base;
 using PetAccountSystem.Client.Pets;
@@ -14,11 +15,10 @@ using System.Windows;
 using System.Windows.Input;
 
 namespace PetAccountSystem.AppWPF.ViewModels;
-internal class MainWindowViewModel : DialogViewModel
+internal class MainWindowViewModel : DialogViewModel, IDisposable
 {
     private readonly DomainLogic _domainLogic;
     private readonly IUserDialog _userDialog;
-    private readonly IMessageBus _messageBus;
 
     #region Pets
 
@@ -32,7 +32,7 @@ internal class MainWindowViewModel : DialogViewModel
     }
 
     #endregion
-      
+
     #region Status
 
     private string _status = "Готово!";
@@ -181,12 +181,18 @@ internal class MainWindowViewModel : DialogViewModel
         Title = "Система учета питомника";
     }
 
-    public MainWindowViewModel(DomainLogic domainLogic, IUserDialog userDialog, IMessageBus messageBus) : this()
+    public MainWindowViewModel(DomainLogic domainLogic, IUserDialog userDialog) : this()
     {
         this._domainLogic = domainLogic;
         this._userDialog = userDialog;
-        this._messageBus = messageBus;
     }
+
+    private void OnReciveMessage(Pets pets)
+    {
+        Pets = pets.PetList is not null ? pets.PetList : Pets;
+    }
+
+    public void Dispose() => _subscription.Dispose();
 
     //private string GetTestContent()
     //{
