@@ -17,6 +17,7 @@ namespace PetAccountSystem.AppWPF.ViewModels;
 internal class MainWindowViewModel : TitledViewModel
 {
     private readonly DomainLogic _domainLogic;
+    private readonly IUserDialog _userDialog;
 
     #region Pets
 
@@ -178,11 +179,9 @@ internal class MainWindowViewModel : TitledViewModel
 
     #endregion
 
-    public MainWindowViewModel(DomainLogic domainLogic)
+    public MainWindowViewModel()
     {
         Title = "Система учета питомника";
-
-        this._domainLogic = domainLogic;
 
         #region Commands
 
@@ -193,6 +192,12 @@ internal class MainWindowViewModel : TitledViewModel
 
         #endregion
 
+    }
+
+    public MainWindowViewModel(DomainLogic domainLogic, IUserDialog userDialog) : this()
+    {
+        this._domainLogic = domainLogic;
+        this._userDialog = userDialog;
     }
 
     //private string GetTestContent()

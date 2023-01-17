@@ -1,6 +1,7 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using PetAccountSystem.AppWPF.Services;
 using PetAccountSystem.AppWPF.ViewModels;
+using PetAccountSystem.AppWPF.Views.Windows;
 using PetAccountSystem.Client.Pets;
 using System;
 using System.Collections.Generic;
@@ -28,8 +29,32 @@ public partial class App// : Application
         services.AddSingleton<MainWindowViewModel>();
         services.AddTransient<AddWindowViewModel>();
         services.AddTransient<RemoveWindowViewModel>();
-        services.AddTransient<DomainLogic>();
-
+        services.AddSingleton<DomainLogic>();
+        services.AddSingleton<IUserDialog, UserDialogService>();
+        services.AddTransient(s =>
+        {
+            var model = s.GetRequiredService<MainWindowViewModel>();
+            var window = new MainWindow { DataContext = model };
+            return window;
+        });
+        services.AddTransient(s =>
+        {
+            var model = s.GetRequiredService<AddWindowViewModel>();
+            var window = new AddWindow { DataContext = model };
+            return window;
+        });
+        services.AddTransient(s =>
+        {
+            var model = s.GetRequiredService<RemoveWindowViewModel>();
+            var window = new RemoveWindow { DataContext = model };
+            return window;
+        });
         return services;
+    }
+
+    protected override void OnStartup(StartupEventArgs e)
+    {
+        base.OnStartup(e);
+        Services?.GetRequiredService<MainWindow>().Show();
     }
 }

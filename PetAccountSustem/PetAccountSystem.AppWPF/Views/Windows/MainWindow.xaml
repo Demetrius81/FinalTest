@@ -6,11 +6,8 @@
         xmlns:vm="clr-namespace:PetAccountSystem.AppWPF.ViewModels"
         xmlns:local="clr-namespace:PetAccountSystem.AppWPF"
         mc:Ignorable="d"
-        d:DataContext="{d:DesignInstance vm:MainWindowViewModel}"
+        d:DataContext="{d:DesignInstance vm:MainWindowViewModel, IsDesignTimeCreatable=True}"
         Title="{Binding Title}" Height="450" Width="580">
-    <!--<Window.DataContext>
-        <vm:MainWindowViewModel/>
-    </Window.DataContext>-->
     <DockPanel>
         <Menu DockPanel.Dock="Top">
             <MenuItem Header="Файл">
@@ -25,7 +22,7 @@
                 <TextBlock Text="{Binding Status}"/>
             </StatusBarItem>
             <StatusBarItem>
-                <ProgressBar Width="120" Height="14" Value="30"/>
+                <ProgressBar Width="120" Height="14" Value="100"/>
             </StatusBarItem>
         </StatusBar>
         <Grid>
@@ -42,8 +39,8 @@
                         <RadioButton GroupName="Select" Content="Въючные питомцы" IsChecked="{Binding ShowPack}" Command="{Binding SwichShowStatusCommand}"/>
                     </StackPanel>
                 </GroupBox>
-                <Button Content="Добавить питомца" Command="" Margin="2, 10, 2, 2"/>
-                <Button Content="Удалить питомца" Command="" Margin="2"/>
+                <Button Content="Добавить питомца" Command="{Binding AddWindowCallCommand}" Margin="2, 10, 2, 2"/>
+                <Button Content="Удалить питомца" Command="{Binding RemoveWindowCallCommand}" Margin="2"/>
             </StackPanel>
             <StackPanel Grid.Column="1">
                 <GroupBox Background="Lavender" Header="Список питомцев" Margin="2" Height="348">
