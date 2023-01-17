@@ -101,7 +101,9 @@ internal class MainWindowViewModel : TitledViewModel
 
     #region CloseApplicationCommand
 
-    public ICommand CloseApplicationCommand { get; }
+    private LambdaCommand? _CloseApplicationCommand;
+
+    public ICommand CloseApplicationCommand => _CloseApplicationCommand ??= new(OnCloseApplicationCommandExecuted, p => true);
 
     private void OnCloseApplicationCommandExecuted(object p)
     {
@@ -114,7 +116,9 @@ internal class MainWindowViewModel : TitledViewModel
 
     #region SwichShowStatusCommand
 
-    public ICommand SwichShowStatusCommand { get; }
+    private LambdaCommand? _SwichShowStatusCommand;
+
+    public ICommand SwichShowStatusCommand => _AddWindowCallCommand ??= new(OnSwichShowStatusCommandExecuted, p => true);
 
     private async void OnSwichShowStatusCommandExecuted(object p)
     {
@@ -139,41 +143,31 @@ internal class MainWindowViewModel : TitledViewModel
         Status = "Готов!";
     }
 
-    private bool CanSwichShowStatusCommandExecute(object p) => true;
-
     #endregion
 
     #region AddWindowCallCommand
 
-    public ICommand AddWindowCallCommand { get; }
+    private LambdaCommand? _AddWindowCallCommand;
+
+    public ICommand AddWindowCallCommand => _AddWindowCallCommand ??= new(OnAddWindowCallCommandExecuted, p => true);
 
     private void OnAddWindowCallCommandExecuted(object p)
     {
         ;
     }
 
-    private bool CanAddWindowCallCommandExecute(object p) => true;
-
     #endregion
 
     #region RemoveWindowCallCommand
 
-    public ICommand RemoveWindowCallCommand { get; }
+    private LambdaCommand? _RemoveWindowCallCommand;
+
+    public ICommand RemoveWindowCallCommand => _AddWindowCallCommand ??= new(OnRemoveWindowCallCommandExecuted, p => !(Pets == Enumerable.Empty<Pet>() || Pets.Count == 1 && (Pets.FirstOrDefault() is null || Pets.FirstOrDefault()?.Id == 0)));
 
     private void OnRemoveWindowCallCommandExecuted(object p)
     {
         ;
     }
-
-    private bool CanRemoveWindowCallCommandExecute(object p)
-    {
-        if (Pets == Enumerable.Empty<Pet>() || Pets.Count == 1 && (Pets.FirstOrDefault() is null || Pets.FirstOrDefault()?.Id == 0))
-        {
-            return false;
-        }
-
-        return true;
-    } 
 
     #endregion
 
@@ -182,16 +176,6 @@ internal class MainWindowViewModel : TitledViewModel
     public MainWindowViewModel()
     {
         Title = "Система учета питомника";
-
-        #region Commands
-
-        CloseApplicationCommand = new LambdaCommand(OnCloseApplicationCommandExecuted, CanCloseApplicationCommandExecute);
-        SwichShowStatusCommand = new LambdaCommand(OnSwichShowStatusCommandExecuted, CanSwichShowStatusCommandExecute);
-        AddWindowCallCommand = new LambdaCommand(OnAddWindowCallCommandExecuted, CanAddWindowCallCommandExecute);
-        RemoveWindowCallCommand = new LambdaCommand(OnRemoveWindowCallCommandExecuted, CanRemoveWindowCallCommandExecute);
-
-        #endregion
-
     }
 
     public MainWindowViewModel(DomainLogic domainLogic, IUserDialog userDialog) : this()
