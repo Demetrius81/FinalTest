@@ -6,11 +6,8 @@
         xmlns:local="clr-namespace:PetAccountSystem.AppWPF.Views.Windows"
         xmlns:vm="clr-namespace:PetAccountSystem.AppWPF.ViewModels"
         mc:Ignorable="d"
-        d:DataContext="{d:DesignInstance vm:AddWindowViewModel}"
+        d:DataContext="{d:DesignInstance vm:AddWindowViewModel, IsDesignTimeCreatable=True}"
         Title="{Binding Title}" Height="185" Width="260">
-    <!--<Window.DataContext>
-        <vm:AddWindowViewModel/>
-    </Window.DataContext>-->
     <StackPanel>
         <WrapPanel>
             <TextBox Text="0" Height="20" Width="50" Margin="2" />

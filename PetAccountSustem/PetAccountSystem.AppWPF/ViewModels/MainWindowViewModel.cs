@@ -14,7 +14,7 @@ using System.Windows;
 using System.Windows.Input;
 
 namespace PetAccountSystem.AppWPF.ViewModels;
-internal class MainWindowViewModel : TitledViewModel
+internal class MainWindowViewModel : DialogViewModel
 {
     private readonly DomainLogic _domainLogic;
     private readonly IUserDialog _userDialog;
@@ -105,12 +105,10 @@ internal class MainWindowViewModel : TitledViewModel
 
     public ICommand CloseApplicationCommand => _CloseApplicationCommand ??= new(OnCloseApplicationCommandExecuted, p => true);
 
-    private void OnCloseApplicationCommandExecuted(object p)
+    private void OnCloseApplicationCommandExecuted()
     {
         Application.Current.Shutdown();
     }
-
-    private bool CanCloseApplicationCommandExecute(object p) => true;
 
     #endregion
 
@@ -118,9 +116,9 @@ internal class MainWindowViewModel : TitledViewModel
 
     private LambdaCommand? _SwichShowStatusCommand;
 
-    public ICommand SwichShowStatusCommand => _AddWindowCallCommand ??= new(OnSwichShowStatusCommandExecuted, p => true);
+    public ICommand SwichShowStatusCommand => _SwichShowStatusCommand ??= new(OnSwichShowStatusCommandExecuted, p => true);
 
-    private async void OnSwichShowStatusCommandExecuted(object p)
+    private async void OnSwichShowStatusCommandExecuted()
     {
         var temp = true switch
         {
@@ -151,9 +149,10 @@ internal class MainWindowViewModel : TitledViewModel
 
     public ICommand AddWindowCallCommand => _AddWindowCallCommand ??= new(OnAddWindowCallCommandExecuted, p => true);
 
-    private void OnAddWindowCallCommandExecuted(object p)
+    private void OnAddWindowCallCommandExecuted()
     {
-        ;
+        _userDialog.OpenAddWindow();
+        OnDialogComplete(EventArgs.Empty);
     }
 
     #endregion
@@ -162,12 +161,15 @@ internal class MainWindowViewModel : TitledViewModel
 
     private LambdaCommand? _RemoveWindowCallCommand;
 
-    public ICommand RemoveWindowCallCommand => _AddWindowCallCommand ??= new(OnRemoveWindowCallCommandExecuted, p => !(Pets == Enumerable.Empty<Pet>() || Pets.Count == 1 && (Pets.FirstOrDefault() is null || Pets.FirstOrDefault()?.Id == 0)));
+    public ICommand RemoveWindowCallCommand => _RemoveWindowCallCommand ??= new(OnRemoveWindowCallCommandExecuted, CanRemoveWindowCallCommandExecute);
 
-    private void OnRemoveWindowCallCommandExecuted(object p)
+    private void OnRemoveWindowCallCommandExecuted()
     {
-        ;
+        _userDialog.OpenRemoveWindow();
+        OnDialogComplete(EventArgs.Empty);
     }
+
+    private bool CanRemoveWindowCallCommandExecute() => !(Pets == Enumerable.Empty<Pet>() || Pets.Count == 1 && (Pets.FirstOrDefault() is null || Pets.FirstOrDefault()?.Id == 0));
 
     #endregion
 

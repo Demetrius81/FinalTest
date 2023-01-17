@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace PetAccountSystem.AppWPF.ViewModels;
-internal class AddWindowViewModel : TitledViewModel
+internal class AddWindowViewModel : DialogViewModel
 {
 	public AddWindowViewModel()
 	{

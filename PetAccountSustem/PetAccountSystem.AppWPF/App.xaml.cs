@@ -35,18 +35,21 @@ public partial class App// : Application
         {
             var model = s.GetRequiredService<MainWindowViewModel>();
             var window = new MainWindow { DataContext = model };
+            model.DialogComplete += (_, _) => window.Close();
             return window;
         });
         services.AddTransient(s =>
         {
             var model = s.GetRequiredService<AddWindowViewModel>();
             var window = new AddWindow { DataContext = model };
+            model.DialogComplete += (_, _) => window.Close();
             return window;
         });
         services.AddTransient(s =>
         {
             var model = s.GetRequiredService<RemoveWindowViewModel>();
             var window = new RemoveWindow { DataContext = model };
+            model.DialogComplete += (_, _) => window.Close();
             return window;
         });
         return services;
