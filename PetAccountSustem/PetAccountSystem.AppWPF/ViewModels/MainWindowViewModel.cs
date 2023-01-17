@@ -15,7 +15,7 @@ using System.Windows;
 using System.Windows.Input;
 
 namespace PetAccountSystem.AppWPF.ViewModels;
-internal class MainWindowViewModel : DialogViewModel, IDisposable
+internal class MainWindowViewModel : DialogViewModel
 {
     private readonly DomainLogic _domainLogic;
     private readonly IUserDialog _userDialog;
@@ -192,7 +192,6 @@ internal class MainWindowViewModel : DialogViewModel, IDisposable
         Pets = pets.PetList is not null ? pets.PetList : Pets;
     }
 
-    public void Dispose() => _subscription.Dispose();
 
     //private string GetTestContent()
     //{

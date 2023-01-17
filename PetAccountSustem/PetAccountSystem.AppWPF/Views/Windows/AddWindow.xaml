@@ -27,11 +27,11 @@
                     <ComboBox Height="20" Width="150" Margin="2">
 
                     </ComboBox>
-                    <Button Content="Добавить вид" Margin="2" Width="100"/>
+                    <Button Content="Добавить вид" Margin="2" Width="100" Command="{Binding AddKindOfPetsCommand}"/>
                 </StackPanel>
             </Grid>
-            <Button Content="Добавить питомца" Margin="2" Width="254" HorizontalAlignment="Left"/>
-            <Button Content="Отмена" Margin="2" Width="254" HorizontalAlignment="Left"/>
+            <Button Content="Добавить питомца" Margin="2" Width="254" HorizontalAlignment="Left" Command="{Binding AddPetCommand}"/>
+            <Button Content="Отмена" Margin="2" Width="254" HorizontalAlignment="Left" Command="{Binding MainWindowCallCommand}"/>
         </StackPanel>
     </StackPanel>
 </Window>
