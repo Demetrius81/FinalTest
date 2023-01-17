@@ -18,6 +18,7 @@ internal class MainWindowViewModel : DialogViewModel
 {
     private readonly DomainLogic _domainLogic;
     private readonly IUserDialog _userDialog;
+    private readonly IMessageBus _messageBus;
 
     #region Pets
 
@@ -180,10 +181,11 @@ internal class MainWindowViewModel : DialogViewModel
         Title = "Система учета питомника";
     }
 
-    public MainWindowViewModel(DomainLogic domainLogic, IUserDialog userDialog) : this()
+    public MainWindowViewModel(DomainLogic domainLogic, IUserDialog userDialog, IMessageBus messageBus) : this()
     {
         this._domainLogic = domainLogic;
         this._userDialog = userDialog;
+        this._messageBus = messageBus;
     }
 
     //private string GetTestContent()

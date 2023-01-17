@@ -31,6 +31,7 @@ public partial class App// : Application
         services.AddTransient<RemoveWindowViewModel>();
         services.AddSingleton<DomainLogic>();
         services.AddSingleton<IUserDialog, UserDialogService>();
+        services.AddSingleton<IMessageBus, MessageBusService>();
         services.AddTransient(s =>
         {
             var model = s.GetRequiredService<MainWindowViewModel>();
