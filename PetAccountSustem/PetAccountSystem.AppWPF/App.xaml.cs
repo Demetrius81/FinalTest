@@ -55,6 +55,6 @@ public partial class App// : Application
     protected override void OnStartup(StartupEventArgs e)
     {
         base.OnStartup(e);
-        Services?.GetRequiredService<MainWindow>().Show();
+        Services?.GetRequiredService<IUserDialog>().OpenMainWindow();
     }
 }
