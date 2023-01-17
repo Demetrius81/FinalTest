@@ -196,5 +196,11 @@ internal class MainWindowViewModel : DialogViewModel
     }
 
 
+    //private string GetTestContent()
+    //{
+    //    return CheckStatus ? "Checked" : "Unchecked";
+    //}
+
+
 
 }
