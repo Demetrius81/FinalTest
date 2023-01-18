@@ -6,6 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
+using System.Windows;
 using System.Windows.Input;
 
 namespace PetAccountSystem.AppWPF.ViewModels;
@@ -89,6 +90,8 @@ internal class AddWindowViewModel : DialogViewModel
         int count;
         if (!int.TryParse(EnteredValue, out count))
         {
+            
+
             throw new InvalidOperationException("Need enter some number");
         }
         else if (count <= 0)
@@ -100,7 +103,7 @@ internal class AddWindowViewModel : DialogViewModel
 
         if (!result || pet is null)
         {
-            throw new Exception("Something wrong with logic");
+            throw new InvalidOperationException("Something wrong with logic");
         }
 
         this._petsDictionary[SelectedKindOfPet] = await this._logic.AddUpdatePetsCount(count, pet).ConfigureAwait(true);
