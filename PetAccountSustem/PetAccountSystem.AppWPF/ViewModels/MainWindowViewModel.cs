@@ -9,6 +9,8 @@ using System.Windows;
 using System.Windows.Input;
 
 namespace PetAccountSystem.AppWPF.ViewModels;
+
+/// <summary>Модель представления главного окна</summary>
 internal class MainWindowViewModel : DialogViewModel
 {
     private readonly ILogic? _domainLogic;
@@ -16,6 +18,7 @@ internal class MainWindowViewModel : DialogViewModel
 
     #region Pets
 
+    /// <summary>Список питомцев</summary>
     private ICollection<Pet> _pets = new List<Pet>() { new Pet() };
 
     /// <summary>Список питомцев</summary>
@@ -29,6 +32,7 @@ internal class MainWindowViewModel : DialogViewModel
 
     #region Status
 
+    /// <summary>Статус программы</summary>
     private string _status = string.Empty;
 
     /// <summary>Статус программы</summary>
@@ -42,6 +46,7 @@ internal class MainWindowViewModel : DialogViewModel
 
     #region ShowAll
 
+    /// <summary>Показать всех питомцев</summary>
     private bool _showAll = false;
 
     /// <summary>Показать всех питомцев</summary>
@@ -55,6 +60,7 @@ internal class MainWindowViewModel : DialogViewModel
 
     #region ShowHome
 
+    /// <summary>Показать домашних питомцев</summary>
     private bool _showHome;
 
     /// <summary>Показать домашних питомцев</summary>
@@ -68,6 +74,7 @@ internal class MainWindowViewModel : DialogViewModel
 
     #region ShowPack
 
+    /// <summary>Показать въючных питомцев</summary>
     private bool _showPack;
 
     /// <summary>Показать въючных питомцев</summary>
@@ -81,6 +88,7 @@ internal class MainWindowViewModel : DialogViewModel
 
     #region TotalPets
 
+    /// <summary>Всего питомцев</summary>
     private int _totalPets;
 
     /// <summary>Всего питомцев</summary>
@@ -96,11 +104,14 @@ internal class MainWindowViewModel : DialogViewModel
 
     #region CloseApplicationCommand
 
+    /// <summary>Команда закрытия приложения</summary>
     private LambdaCommand? _CloseApplicationCommand;
 
+    /// <summary>Команда закрытия приложения</summary>
     public ICommand CloseApplicationCommand =>
         _CloseApplicationCommand ??= new(OnCloseApplicationCommandExecuted, p => true);
 
+    /// <summary>Логика команды закрытия приложения</summary>
     private void OnCloseApplicationCommandExecuted()
     {
         Application.Current.Shutdown();
@@ -110,11 +121,14 @@ internal class MainWindowViewModel : DialogViewModel
 
     #region SwichShowStatusCommand
 
+    /// <summary>Команда демонстрации списка питомцев</summary>
     private LambdaCommand? _SwichShowStatusCommand;
 
+    /// <summary>Команда демонстрации списка питомцев</summary>
     public ICommand SwichShowStatusCommand =>
         _SwichShowStatusCommand ??= new(OnSwichShowStatusCommandExecuted, p => true);
 
+    /// <summary>Логика команды демонстрации списка питомцев</summary>
     private async void OnSwichShowStatusCommandExecuted()
     {
         var temp = true switch
@@ -142,34 +156,42 @@ internal class MainWindowViewModel : DialogViewModel
 
     #region AddWindowCallCommand
 
+    /// <summary>Команда вызова окна добавления питомцев</summary>
     private LambdaCommand? _AddWindowCallCommand;
 
+    /// <summary>Команда вызова окна добавления питомцев</summary>
     public ICommand AddWindowCallCommand =>
         _AddWindowCallCommand ??= new(OnAddWindowCallCommandExecuted, CanAddWindowCallCommandExecute);
 
+    /// <summary>Логика команды вызова окна добавления питомцев</summary>
     private void OnAddWindowCallCommandExecuted()
     {
         this._userDialog?.OpenAddWindow();
         OnDialogComplete(EventArgs.Empty);
     }
 
+    /// <summary>Логика проверки возможности выполнения команды вызова окна добавления питомцев</summary>
     private bool CanAddWindowCallCommandExecute() => Status != "Нет связи с сервером!";
 
     #endregion
 
     #region RemoveWindowCallCommand
 
+    /// <summary>Команда вызова окна удаления питомцев</summary>
     private LambdaCommand? _RemoveWindowCallCommand;
 
+    /// <summary>Команда вызова окна удаления питомцев</summary>
     public ICommand RemoveWindowCallCommand =>
         _RemoveWindowCallCommand ??= new(OnRemoveWindowCallCommandExecuted, CanRemoveWindowCallCommandExecute);
 
+    /// <summary>Логика команды вызова окна удаления питомцев</summary>
     private void OnRemoveWindowCallCommandExecuted()
     {
         this._userDialog?.OpenRemoveWindow();
         OnDialogComplete(EventArgs.Empty);
     }
 
+    /// <summary>Логика проверки возможности выполнения команды вызова окна удаления питомцев</summary>
     private bool CanRemoveWindowCallCommandExecute() =>
         _status != "Нет связи с сервером!" ||
         Pets != Enumerable.Empty<Pet>() ||
@@ -192,20 +214,12 @@ internal class MainWindowViewModel : DialogViewModel
         SwitchChoiseOnShowAll();
     }
 
-
+    /// <summary>
+    /// Метод запуска работы логики
+    /// </summary>
     private void SwitchChoiseOnShowAll()
     {
         ShowAll = true;
         OnSwichShowStatusCommandExecuted();
     }
-
-
-    public void UpdateStatus()
-    {
-        Status = "Нет связи с сервером!";
-        OnSwichShowStatusCommandExecuted();
-    }
-
-
-
 }

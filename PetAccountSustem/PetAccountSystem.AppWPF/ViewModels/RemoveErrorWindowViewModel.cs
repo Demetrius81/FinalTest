@@ -5,17 +5,22 @@ using System;
 using System.Windows.Input;
 
 namespace PetAccountSystem.AppWPF.ViewModels;
+
+/// <summary>Модель представления окна ошибки</summary>
 internal class RemoveErrorWindowViewModel : DialogViewModel
 {
     private readonly IUserDialog? _userDialog;
 
     #region RemoveWindowCallCommand
 
+    /// <summary>Команда вызова окна удаления</summary>
     private LambdaCommand? _RemoveWindowCallCommand;
 
+    /// <summary>Команда вызова окна удаления</summary>
     public ICommand RemoveWindowCallCommand =>
         _RemoveWindowCallCommand ??= new(OnRemoveWindowCallCommandExecuted, prop => true);
 
+    /// <summary>Логика команды вызова окна удаления</summary>
     private void OnRemoveWindowCallCommandExecuted()
     {
         this._userDialog?.OpenRemoveWindow();

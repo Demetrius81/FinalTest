@@ -8,18 +8,22 @@ using System.Linq;
 using System.Windows.Input;
 
 namespace PetAccountSystem.AppWPF.ViewModels;
+
+/// <summary>Модель представления окна добавлени питомцев</summary>
 internal class AddWindowViewModel : DialogViewModel
 {
     private readonly IUserDialog? _userDialog;
     private readonly ILogic? _logic;
 
+    /// <summary>Словарь название питомца - питомец</summary>
     private readonly Dictionary<string, Pet> _petsDictionary = new();
 
     #region KindOfPets
 
+    /// <summary>Коллекция названий питомцев</summary>
     private ICollection<string> _kindOfPets = new List<string>() { string.Empty };
 
-    /// <summary>Список видов питомцев</summary>
+    /// <summary>Коллекция названий питомцев</summary>
     public ICollection<string> KindOfPets
     {
         get => _kindOfPets;
@@ -30,9 +34,10 @@ internal class AddWindowViewModel : DialogViewModel
 
     #region SelectedKindOfPet
 
+    /// <summary>Выбранное название питомца</summary>
     private string _selectedKindOfPet = string.Empty;
 
-    /// <summary>Статус программы</summary>
+    /// <summary>Выбранное название питомца</summary>
     public string SelectedKindOfPet
     {
         get => _selectedKindOfPet;
@@ -43,9 +48,10 @@ internal class AddWindowViewModel : DialogViewModel
 
     #region EnteredValue
 
+    /// <summary>Введенноый текст</summary>
     private string _enteredValue = string.Empty;
 
-    /// <summary>Статус программы</summary>
+    /// <summary>Введенноый текст</summary>
     public string EnteredValue
     {
         get => _enteredValue;
@@ -54,15 +60,17 @@ internal class AddWindowViewModel : DialogViewModel
 
     #endregion
 
-
     #region Commands
 
     #region AddKindOfPetsCommand
 
+    /// <summary>Команда вызова окна добавления нового вида питомца</summary>
     private LambdaCommand? _AddKindOfPetsCommand;
 
+    /// <summary>Команда вызова окна добавления нового вида питомца</summary>
     public ICommand AddKindOfPetsCommand => _AddKindOfPetsCommand ??= new(OnAddKindOfPetsCommandExecuted, p => true);
 
+    /// <summary>Логика команды вызова окна добавления нового вида питомца</summary>
     private void OnAddKindOfPetsCommandExecuted()
     {
         this._userDialog?.OpenAddKindOfPetsWindow();
@@ -74,10 +82,13 @@ internal class AddWindowViewModel : DialogViewModel
 
     #region AddPetCommand
 
+    /// <summary>Команда добавления новых питомцев</summary>
     private LambdaCommand? _AddPetCommand;
 
+    /// <summary>Команда добавления новых питомцев</summary>
     public ICommand AddPetCommand => _AddPetCommand ??= new(OnAddPetCommandExecuted, CanAddPetCommandExecute);
 
+    /// <summary>Логика команды добавления новых питомцев</summary>
     private async void OnAddPetCommandExecuted()
     {
         if (string.IsNullOrEmpty(EnteredValue) ||
@@ -106,10 +117,13 @@ internal class AddWindowViewModel : DialogViewModel
 
     #region MainWindowCallCommand
 
+    /// <summary>Команда вызова главного окна</summary>
     private LambdaCommand? _MainWindowCallCommand;
 
+    /// <summary>Команда вызова главного окна</summary>
     public ICommand MainWindowCallCommand => _MainWindowCallCommand ??= new(OnMainWindowCallCommandExecuted, p => true);
 
+    /// <summary>Логика команды вызова главного окна</summary>
     private void OnMainWindowCallCommandExecuted()
     {
         this._userDialog?.OpenMainWindow();
@@ -133,6 +147,8 @@ internal class AddWindowViewModel : DialogViewModel
         KindOfPets = _petsDictionary.Keys.ToList() ?? new List<string>() { string.Empty };
     }
 
+    /// <summary>Метод заполнения коллекций питомцами</summary>
+    /// <returns>Коллекция питомцев</returns>
     private Dictionary<string, Pet> GetPetsKind()
     {
         var temp = this._logic?.GetAllPetsAsync().Result;

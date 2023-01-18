@@ -2,6 +2,8 @@
 using System;
 
 namespace PetAccountSystem.AppWPF.Infrastructure.Commands;
+
+/// <summary>Лямбда расширение базовой команды</summary>
 internal class LambdaCommand : Command
 {
     private readonly Delegate? _execute;
@@ -52,7 +54,7 @@ internal class LambdaCommand : Command
         switch (_execute)
         {
             default:
-                throw new InvalidOperationException($"Type of delegate {_canExecute.GetType()} not supported");
+                throw new InvalidOperationException($"Type of delegate {_canExecute?.GetType()} not supported");
             case null:
                 throw new InvalidOperationException($"Command invocation delegate not specified");
             case Action execute:

@@ -8,18 +8,22 @@ using System.Linq;
 using System.Windows.Input;
 
 namespace PetAccountSystem.AppWPF.ViewModels;
+
+/// <summary>Модель представления окна удаления питомцев</summary>
 internal class RemoveWindowViewModel : DialogViewModel
 {
     private readonly IUserDialog? _userDialog;
     private readonly ILogic? _logic;
 
+    /// <summary>Словарь название питомца - питомец</summary>
     private readonly Dictionary<string, Pet> _petsDictionary = new();
 
     #region KindsOfPets
 
+    /// <summary>Коллекция названий питомцев</summary>
     private ICollection<string> _kindsOfPets = new List<string>() { string.Empty };
 
-    /// <summary>Список видов питомцев</summary>
+    /// <summary>Коллекция названий питомцев</summary>
     public ICollection<string> KindsOfPets
     {
         get => _kindsOfPets;
@@ -30,9 +34,10 @@ internal class RemoveWindowViewModel : DialogViewModel
 
     #region SelectedKindOfPet
 
+    /// <summary>Выбранное название питомца</summary>
     private string _selectedKindOfPet = string.Empty;
 
-    /// <summary>Статус программы</summary>
+    /// <summary>Выбранное название питомца</summary>
     public string SelectedKindOfPet
     {
         get => _selectedKindOfPet;
@@ -60,9 +65,10 @@ internal class RemoveWindowViewModel : DialogViewModel
 
     #region EnteredValue
 
+    /// <summary>Введенноый текст</summary>
     private string _enteredValue = string.Empty;
 
-    /// <summary>Статус программы</summary>
+    /// <summary>Введенноый текст</summary>
     public string EnteredValue
     {
         get => _enteredValue;
@@ -76,10 +82,13 @@ internal class RemoveWindowViewModel : DialogViewModel
 
     #region RemovePetCommand
 
+    /// <summary>Команда удаления питомцев</summary>
     private LambdaCommand? _RemovePetCommand;
 
+    /// <summary>Команда удаления питомцев</summary>
     public ICommand RemovePetCommand => _RemovePetCommand ??= new(OnRemovePetCommandExecuted, CanRemovePetCommandExecute);
 
+    /// <summary>Логика команды удаления питомцев</summary>
     private async void OnRemovePetCommandExecuted()
     {
         if (string.IsNullOrEmpty(EnteredValue) || !int.TryParse(EnteredValue, out int count) || count <= 0)
@@ -99,16 +108,20 @@ internal class RemoveWindowViewModel : DialogViewModel
         OnMainWindowCallCommandExecuted();
     }
 
+    /// <summary>Логика проверки возможности выполнения команды удаления питомцев</summary>
     private bool CanRemovePetCommandExecute() => CountofPets > 0 && EnteredValue.Length > 0;
 
     #endregion
 
     #region MainWindowCallCommand
 
+    /// <summary>Команда вызова главного окна</summary>
     private LambdaCommand? _MainWindowCallCommand;
 
+    /// <summary>Команда вызова главного окна</summary>
     public ICommand MainWindowCallCommand => _MainWindowCallCommand ??= new(OnMainWindowCallCommandExecuted, p => true);
 
+    /// <summary>Логика команды вызова главного окна</summary>
     private void OnMainWindowCallCommandExecuted()
     {
         this._userDialog?.OpenMainWindow();
@@ -132,6 +145,8 @@ internal class RemoveWindowViewModel : DialogViewModel
         KindsOfPets = this._petsDictionary.Keys.ToList() ?? new List<string>() { string.Empty };
     }
 
+    /// <summary>Метод заполнения коллекций питомцами</summary>
+    /// <returns>Словарь питомцев</returns>
     private Dictionary<string, Pet> GetPetsKind()
     {
         var temp = this._logic?.GetAllPetsAsync().Result;

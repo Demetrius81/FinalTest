@@ -2,6 +2,8 @@
 using System.Windows.Input;
 
 namespace PetAccountSystem.AppWPF.Infrastructure.Commands.Base;
+
+/// <summary>Базовая команда</summary>
 internal abstract class Command : ICommand
 {
     public event EventHandler? CanExecuteChanged

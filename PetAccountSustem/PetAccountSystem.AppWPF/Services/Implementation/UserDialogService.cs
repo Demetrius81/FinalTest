@@ -4,6 +4,8 @@ using PetAccountSystem.AppWPF.Views.Windows;
 using System;
 
 namespace PetAccountSystem.AppWPF.Services.Implementation;
+
+/// <summary>Класс логики взаимодействия окон</summary>
 internal class UserDialogService : IUserDialog
 {
     private readonly IServiceProvider _services;

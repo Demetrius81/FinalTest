@@ -10,10 +10,15 @@ using System;
 using System.Net.Http;
 
 namespace PetAccountSystem.AppWPF.Infrastructure.Extensions;
+
+/// <summary>Класс расширения для регистрации сервисов</summary>
 internal static class ServiceExtensions
 {
     private const string BASE_ADDRESS = "http://localhost:5241";
 
+    /// <summary>Метод расширения регистрации сервисов</summary>
+    /// <param name="services">Контейнер сервисов</param>
+    /// <returns>Контейнер сервисов</returns>
     public static IServiceCollection ServicesSubscription(this IServiceCollection services)
     {
         var client = new HttpClient
@@ -35,6 +40,9 @@ internal static class ServiceExtensions
         return services;
     }
 
+    /// <summary>Метод расширения регистрации окон</summary>
+    /// <param name="services">Контейнер сервисов</param>
+    /// <returns>Контейнер сервисов</returns>
     public static IServiceCollection WindowsSubscription(this IServiceCollection services)
     {
         services.AddTransient(s =>
