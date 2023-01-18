@@ -4,6 +4,11 @@ using PetAccountSystem.WebAPI.Data.Context;
 
 namespace PetAccountSystem.WebAPI.Data;
 
+/// <summary>
+/// Класс инициализатор базы данных
+/// Содержит логику создания, удаления,
+/// и заполнения тестовыми данными базы
+/// </summary>
 public class AppDbInitializer
 {
     private readonly PetDBContext _dbContext;

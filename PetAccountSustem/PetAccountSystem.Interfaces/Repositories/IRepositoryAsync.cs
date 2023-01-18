@@ -2,6 +2,8 @@
 
 namespace PetAccountSystem.Interfaces.Repositories;
 
+/// <summary>Базовое понятие асинхронного репозитория</summary>
+/// <typeparam name="T">Сущность</typeparam>
 public interface IRepositoryAsync<T> where T : class, IEntity
 {
     Task<IEnumerable<T>> GetAllAsync(CancellationToken cancel = default);

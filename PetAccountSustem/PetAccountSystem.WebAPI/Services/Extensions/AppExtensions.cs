@@ -7,8 +7,12 @@ using System.Runtime.CompilerServices;
 
 namespace PetAccountSystem.WebAPI.Services.Extensions;
 
+/// <summary>Класс расширения регистрации сервисов</summary>
 internal static class AppExtensions
 {
+    /// <summary>Метод расширения для регистрации сервисов</summary>
+    /// <param name="builder">WebApplicationBuilder</param>
+    /// <returns>WebApplicationBuilder</returns>
     public static WebApplicationBuilder RegisterServices(this WebApplicationBuilder builder)
     {
         builder.Services.AddControllers();
@@ -19,6 +23,9 @@ internal static class AppExtensions
         return builder;
     }
 
+    /// <summary>Метод расширения для регистрации и настройки базы данных</summary>
+    /// <param name="builder">WebApplicationBuilder</param>
+    /// <returns>WebApplicationBuilder</returns>
     public static WebApplicationBuilder RegisterDbContext(this WebApplicationBuilder builder)
     {
         var connectionString = builder.Configuration.GetConnectionString("Sqlite");

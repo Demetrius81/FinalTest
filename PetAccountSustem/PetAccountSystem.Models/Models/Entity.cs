@@ -2,6 +2,8 @@
 using System.Diagnostics.CodeAnalysis;
 
 namespace PetAccountSystem.Models.Models;
+
+/// <summary>Базовый класс сущности</summary>
 public abstract class Entity : IEntity, IEquatable<Entity>
 {
     public int Id { get; set; }
