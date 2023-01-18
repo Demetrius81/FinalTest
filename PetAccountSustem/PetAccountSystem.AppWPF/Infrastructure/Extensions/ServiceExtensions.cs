@@ -3,6 +3,8 @@ using PetAccountSystem.AppWPF.Services;
 using PetAccountSystem.AppWPF.ViewModels;
 using PetAccountSystem.AppWPF.Views.Windows;
 using PetAccountSystem.Client.Pets;
+using PetAccountSystem.Interfaces.Repositories;
+using PetAccountSystem.Models.Models;
 using System;
 using System.Net.Http;
 
@@ -13,9 +15,10 @@ internal static class ServiceExtensions
 
     public static IServiceCollection ServicesSubscription(this IServiceCollection services)
     {
-        var client = new HttpClient();
-        client.BaseAddress = new Uri(BASE_ADDRESS);
-        var petsClient = new PetsClient(client);
+        var client = new HttpClient
+        {
+            BaseAddress = new Uri(BASE_ADDRESS)
+        };
 
         services.AddTransient<MainWindowViewModel>();
         services.AddTransient<AddWindowViewModel>();
@@ -24,7 +27,8 @@ internal static class ServiceExtensions
         services.AddTransient<AddErrorWindowViewModel>();
         services.AddTransient<RemoveErrorWindowViewModel>();
         services.AddTransient<AddKindErrorWindowViewModel>();
-        services.AddTransient<ILogic, DomainLogic>(x => new DomainLogic(petsClient));
+        services.AddTransient<ILogic, DomainLogic>();
+        services.AddTransient<IRepositoryAsync<Pet>, PetsClient>(x => new PetsClient(client));
         services.AddTransient<IUserDialog, UserDialogService>();
 
         return services;

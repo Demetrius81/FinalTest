@@ -1,16 +1,7 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using PetAccountSystem.AppWPF.Infrastructure.Extensions;
 using PetAccountSystem.AppWPF.Services;
-using PetAccountSystem.AppWPF.ViewModels;
-using PetAccountSystem.AppWPF.Views.Windows;
-using PetAccountSystem.Client.Pets;
 using System;
-using System.Collections.Generic;
-using System.Configuration;
-using System.Data;
-using System.Linq;
-using System.Net.Http;
-using System.Threading.Tasks;
 using System.Windows;
 
 namespace PetAccountSystem.AppWPF;

@@ -20,12 +20,6 @@
                 <TextBlock Text="животных" Margin="3, 2, 2, 2"/>
             </WrapPanel>
         </GroupBox>
-        <!--<GroupBox x:Name="SelectShowOption" Header="Выбор режима отображения" Margin="2">
-            <StackPanel>
-                <RadioButton GroupName="Select" Content="Домашние питомцы" IsChecked="True" Command=""/>
-                <RadioButton GroupName="Select" Content="Въючные питомцы" IsChecked="False" Command=""/>
-            </StackPanel>
-        </GroupBox>-->
         <StackPanel Orientation="Vertical">
             <Grid>
                 <GroupBox Header="Вид питомцев" Margin="2">

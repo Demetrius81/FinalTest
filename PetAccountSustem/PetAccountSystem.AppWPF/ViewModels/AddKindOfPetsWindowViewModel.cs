@@ -1,12 +1,9 @@
 ﻿using PetAccountSystem.AppWPF.Infrastructure.Commands;
 using PetAccountSystem.AppWPF.Services;
 using PetAccountSystem.AppWPF.ViewModels.Base;
-using PetAccountSystem.Models.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Input;
 
 namespace PetAccountSystem.AppWPF.ViewModels;

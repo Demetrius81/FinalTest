@@ -5,9 +5,6 @@ using PetAccountSystem.Models.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Annotations;
 using System.Windows.Input;
 
 namespace PetAccountSystem.AppWPF.ViewModels;
@@ -43,7 +40,7 @@ internal class RemoveWindowViewModel : DialogViewModel
         {
             Set(ref _selectedKindOfPet, value);
             CountofPets = this._petsDictionary[_selectedKindOfPet].Count;
-        } 
+        }
     }
 
     #endregion

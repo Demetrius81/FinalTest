@@ -1,11 +1,9 @@
-﻿using PetAccountSystem.Client.Pets;
+﻿using PetAccountSystem.Interfaces.Repositories;
 using PetAccountSystem.Models.Models;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
-using System.Net.Http;
-using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -13,9 +11,9 @@ namespace PetAccountSystem.AppWPF.Services;
 internal class DomainLogic : ILogic
 {
 
-    private readonly PetsClient _petsClient;
+    private readonly IRepositoryAsync<Pet> _petsClient;
 
-    public DomainLogic(PetsClient petsClient)
+    public DomainLogic(IRepositoryAsync<Pet> petsClient)
     {
         this._petsClient = petsClient;
     }

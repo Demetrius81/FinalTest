@@ -56,7 +56,6 @@
                     <TextBlock Text="Всего питомцев:" Margin="2" VerticalAlignment="Bottom"/>
                     <TextBlock Text="{Binding TotalPets}" FontWeight="Bold" FontSize="12" Margin="6, 2, 2, 2" VerticalAlignment="Bottom"/>
                 </WrapPanel>
-
             </StackPanel>
         </Grid>
     </DockPanel>

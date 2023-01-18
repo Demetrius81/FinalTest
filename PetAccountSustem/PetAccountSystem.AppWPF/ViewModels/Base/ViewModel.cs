@@ -1,11 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Linq;
 using System.Runtime.CompilerServices;
-using System.Text;
 using System.Threading;
-using System.Threading.Tasks;
 
 namespace PetAccountSystem.AppWPF.ViewModels.Base;
 internal abstract class ViewModel : INotifyPropertyChanged
@@ -14,7 +11,7 @@ internal abstract class ViewModel : INotifyPropertyChanged
 
     private readonly Lazy<Dictionary<string, object?>> _values = new(() => new(), LazyThreadSafetyMode.PublicationOnly);
 
-    protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null)=>
+    protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null) =>
         PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
 
     protected virtual bool Set<T>(ref T field, T value, [CallerMemberName] string? propertyName = null)
@@ -38,7 +35,7 @@ internal abstract class ViewModel : INotifyPropertyChanged
         if (_values.Value is not { Count: > 0 } values)
             return default;
 
-        return values.TryGetValue(propertyName, out var value) ? (T?)value: default;
+        return values.TryGetValue(propertyName, out var value) ? (T?)value : default;
     }
 
     protected virtual bool Set<T>(T value, [CallerMemberName] string propertyName = null!)

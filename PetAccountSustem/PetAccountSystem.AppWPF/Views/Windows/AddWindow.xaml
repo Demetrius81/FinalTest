@@ -14,23 +14,17 @@
                 <TextBox Text="{Binding EnteredValue, UpdateSourceTrigger=PropertyChanged}" Height="20" Width="50" Margin="2" HorizontalAlignment="Left"/>
             </StackPanel>
         </GroupBox>
-        <!--<GroupBox Header="Выбор режима отображения" Margin="2">
-            <StackPanel>
-                <RadioButton GroupName="Select" Content="Домашние питомцы" IsChecked="True" Command=""/>
-                <RadioButton GroupName="Select" Content="Въючные питомцы" IsChecked="False" Command=""/>
-            </StackPanel>
-        </GroupBox>-->
         <StackPanel Orientation="Vertical">
             <Grid>
                 <GroupBox Header="Вид питомцев" Margin="2">
-                <StackPanel Orientation="Horizontal">
+                    <StackPanel Orientation="Horizontal">
                         <ComboBox 
                             Height="20" Width="150" Margin="2" 
                             ItemsSource="{Binding KindOfPets, UpdateSourceTrigger=PropertyChanged}" 
                             Focusable="True" 
                             SelectedItem="{Binding SelectedKindOfPet, UpdateSourceTrigger=PropertyChanged}"/>
                         <Button Content="Добавить вид" Margin="2" Width="100" Command="{Binding AddKindOfPetsCommand}"/>
-                </StackPanel>
+                    </StackPanel>
                 </GroupBox>
             </Grid>
             <Button Content="Добавить питомца" Margin="10, 2, 2, 2" Width="254" HorizontalAlignment="Left" Command="{Binding AddPetCommand}"/>
