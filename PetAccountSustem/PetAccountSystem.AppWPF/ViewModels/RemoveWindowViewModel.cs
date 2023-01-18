@@ -15,46 +15,98 @@ internal class RemoveWindowViewModel : DialogViewModel
     private readonly IUserDialog _userDialog;
     private readonly DomainLogic _logic;
 
-    #region Commands
 
-    #region AddKindOfPetsCommand
+    private Dictionary<string, Pet> _petsDictionary = new();
 
-    private LambdaCommand? _AddKindOfPetsCommand;
+    #region Pets
 
-    public ICommand AddKindOfPetsCommand => _AddKindOfPetsCommand ??= new(OnAddKindOfPetsCommandExecuted, p => true);
+    private ICollection<Pet> _pets = new List<Pet>() { new Pet() };
 
-    private async void OnAddKindOfPetsCommandExecuted(object p)
+    /// <summary>Список питомцев</summary>
+    public ICollection<Pet> Pets
     {
-        var temp = await _logic.GetPetsAsync().ConfigureAwait(true);
-
-        if (temp is null || temp == Enumerable.Empty<Pet>())
-        {
-            return;
-        }
-
-        var nexttemp = temp.Select(i => i.KindOfAnimal);
-
+        get => _pets;
+        set => Set(ref _pets, value);
     }
 
     #endregion
+
+    #region KindOfPets
+
+    private ICollection<string?> _kindOfPets = new List<string?>() { string.Empty };
+
+    /// <summary>Список видов питомцев</summary>
+    public ICollection<string?> KindOfPets
+    {
+        get => _kindOfPets;
+        set => Set(ref _kindOfPets, value);
+    }
+
+    #endregion
+
+    #region SelectedKindOfPet
+
+    private string _selectedKindOfPet = string.Empty;
+
+    /// <summary>Статус программы</summary>
+    public string SelectedKindOfPet
+    {
+        get => _selectedKindOfPet;
+        set => Set(ref _selectedKindOfPet, value);
+    }
+
+    #endregion
+
+    #region EnteredValue
+
+    private string _enteredValue = string.Empty;
+
+    /// <summary>Статус программы</summary>
+    public string EnteredValue
+    {
+        get => _enteredValue;
+        set => Set(ref _enteredValue, value);
+    }
+
+    #endregion
+
+
+    #region Commands
 
     #region RemovePetCommand
 
     private LambdaCommand? _RemovePetCommand;
 
-    public ICommand RemovePetCommand => _RemovePetCommand ??= new(OnRemovePetCommandExecuted, p => true);
+    public ICommand RemovePetCommand => _RemovePetCommand ??= new(OnRemovePetCommandExecuted, CanRemovePetCommandExecute);
 
     private async void OnRemovePetCommandExecuted()
     {
-        var temp = await _logic.GetPetsAsync().ConfigureAwait(true);
-
-        if (temp is null || temp == Enumerable.Empty<Pet>())
+        if (string.IsNullOrEmpty(EnteredValue))
         {
-            return;
+            throw new InvalidOperationException("Need something enter");
         }
 
-        var nexttemp = temp.Select(i => i.KindOfAnimal);
+        int count;
+        if (!int.TryParse(EnteredValue, out count))
+        {
+            throw new InvalidOperationException("Need enter some number");
+        }
+        else if (count <= 0)
+        {
+            throw new InvalidOperationException("Number must be greater then zero");
+        }
+
+        var result = _petsDictionary.TryGetValue(SelectedKindOfPet, out Pet? pet);
+
+        if (!result || pet is null)
+        {
+            throw new InvalidOperationException("Something wrong with logic");
+        }
+
+        _petsDictionary[SelectedKindOfPet] = await _logic.AddUpdatePetsCount(count, pet).ConfigureAwait(true);
     }
+
+    private bool CanRemovePetCommandExecute() => !string.IsNullOrWhiteSpace(SelectedKindOfPet) && EnteredValue.Length > 0;
 
     #endregion
 
@@ -73,6 +125,7 @@ internal class RemoveWindowViewModel : DialogViewModel
     #endregion
 
     #endregion
+
     public RemoveWindowViewModel()
     {
         Title = "Удалить питомца";

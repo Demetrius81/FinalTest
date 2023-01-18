@@ -14,6 +14,7 @@ internal class UserDialogService : IUserDialog
     private MainWindow? _mainWindow;
     private AddWindow? _addWindow;
     private RemoveWindow? _removeWindow;
+    private AddKindOfPetsWindow? _addKindOfPetsWindow;
 
     public UserDialogService(IServiceProvider services)
     {
@@ -59,6 +60,20 @@ internal class UserDialogService : IUserDialog
         window = this._services.GetRequiredService<RemoveWindow>();
         window.Closed += (_, _) => this._removeWindow = null;
         this._removeWindow = window;
+        window.Show();
+    }
+
+    public void OpenAddKindOfPetsWindow()
+    {
+        if (this._addKindOfPetsWindow is { } window)
+        {
+            window.Show();
+            return;
+        }
+
+        window = this._services.GetRequiredService<AddKindOfPetsWindow>();
+        window.Closed += (_, _) => this._addKindOfPetsWindow = null;
+        this._addKindOfPetsWindow = window;
         window.Show();
     }
 }

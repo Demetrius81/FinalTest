@@ -35,7 +35,7 @@ internal class MainWindowViewModel : DialogViewModel
 
     #region Status
 
-    private string _status = "Готово!";
+    private string _status;
 
     /// <summary>Статус программы</summary>
     public string Status
@@ -148,13 +148,15 @@ internal class MainWindowViewModel : DialogViewModel
 
     private LambdaCommand? _AddWindowCallCommand;
 
-    public ICommand AddWindowCallCommand => _AddWindowCallCommand ??= new(OnAddWindowCallCommandExecuted, p => true);
+    public ICommand AddWindowCallCommand => _AddWindowCallCommand ??= new(OnAddWindowCallCommandExecuted, CanAddWindowCallCommandExecute);
 
     private void OnAddWindowCallCommandExecuted()
     {
         _userDialog.OpenAddWindow();
         OnDialogComplete(EventArgs.Empty);
     }
+
+    private bool CanAddWindowCallCommandExecute() => true;//_status != "Нет связи с сервером!";
 
     #endregion
 
@@ -170,7 +172,10 @@ internal class MainWindowViewModel : DialogViewModel
         OnDialogComplete(EventArgs.Empty);
     }
 
-    private bool CanRemoveWindowCallCommandExecute() => !(Pets == Enumerable.Empty<Pet>() || Pets.Count == 1 && (Pets.FirstOrDefault() is null || Pets.FirstOrDefault()?.Id == 0));
+    private bool CanRemoveWindowCallCommandExecute() => true;
+        //!(_status != "Нет связи с сервером!" ||
+        //Pets == Enumerable.Empty<Pet>() ||
+        //Pets.Count == 1 && (Pets.FirstOrDefault() is null || Pets.FirstOrDefault()?.Id == 0));
 
     #endregion
 
@@ -179,6 +184,7 @@ internal class MainWindowViewModel : DialogViewModel
     public MainWindowViewModel()
     {
         Title = "Система учета питомника";
+        Status = "Нет связи с сервером!";
     }
 
     public MainWindowViewModel(DomainLogic domainLogic, IUserDialog userDialog) : this()

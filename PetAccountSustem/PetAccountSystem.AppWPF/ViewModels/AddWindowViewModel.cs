@@ -6,6 +6,8 @@ using PetAccountSystem.Models.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection.PortableExecutable;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -14,8 +16,50 @@ using System.Windows.Input;
 namespace PetAccountSystem.AppWPF.ViewModels;
 internal class AddWindowViewModel : DialogViewModel
 {
-    private readonly IUserDialog _userDialog;
-    private readonly DomainLogic _logic;
+    private readonly IUserDialog? _userDialog;
+    private readonly DomainLogic? _logic;
+
+    private Dictionary<string, Pet> _petsDictionary = new();
+
+    #region KindOfPets
+
+    private ICollection<string> _kindOfPets = new List<string>() { string.Empty };
+
+    /// <summary>Список видов питомцев</summary>
+    public ICollection<string> KindOfPets
+    {
+        get => _kindOfPets;
+        set => Set(ref _kindOfPets, value);
+    }
+
+    #endregion
+
+    #region SelectedKindOfPet
+
+    private string _selectedKindOfPet = string.Empty;
+
+    /// <summary>Статус программы</summary>
+    public string SelectedKindOfPet
+    {
+        get => _selectedKindOfPet;
+        set => Set(ref _selectedKindOfPet, value);
+    }
+
+    #endregion
+
+    #region EnteredValue
+
+    private string _enteredValue = string.Empty;
+
+    /// <summary>Статус программы</summary>
+    public string EnteredValue
+    {
+        get => _enteredValue;
+        set => Set(ref _enteredValue, value);
+    }
+
+    #endregion
+
 
     #region Commands
 
@@ -25,16 +69,10 @@ internal class AddWindowViewModel : DialogViewModel
 
     public ICommand AddKindOfPetsCommand => _AddKindOfPetsCommand ??= new(OnAddKindOfPetsCommandExecuted, p => true);
 
-    private async void OnAddKindOfPetsCommandExecuted(object p)
+    private void OnAddKindOfPetsCommandExecuted()
     {
-        var temp = await _logic.GetPetsAsync().ConfigureAwait(true);
-
-        if (temp is null || temp == Enumerable.Empty<Pet>())
-        {
-            return;
-        }
-
-        var nexttemp = temp.Select(i => i.KindOfAnimal);
+        this._userDialog?.OpenAddKindOfPetsWindow();
+        OnDialogComplete(EventArgs.Empty);
 
     }
 
@@ -44,19 +82,36 @@ internal class AddWindowViewModel : DialogViewModel
 
     private LambdaCommand? _AddPetCommand;
 
-    public ICommand AddPetCommand => _AddPetCommand ??= new(OnAddPetCommandExecuted, p => true);
+    public ICommand AddPetCommand => _AddPetCommand ??= new(OnAddPetCommandExecuted, CanAddPetCommandExecute);
 
     private async void OnAddPetCommandExecuted()
     {
-        var temp = await _logic.GetPetsAsync().ConfigureAwait(true);
-
-        if (temp is null || temp == Enumerable.Empty<Pet>())
+        if (string.IsNullOrEmpty(EnteredValue))
         {
-            return;
+            throw new InvalidOperationException("Need something enter");
         }
 
-        var nexttemp = temp.Select(i => i.KindOfAnimal);
+        int count;
+        if (!int.TryParse(EnteredValue, out count))
+        {
+            throw new InvalidOperationException("Need enter some number");
+        }
+        else if (count <= 0)
+        {
+            throw new InvalidOperationException("Number must be greater then zero");
+        }
+
+        var result = this._petsDictionary.TryGetValue(SelectedKindOfPet, out Pet? pet);
+
+        if (!result || pet is null)
+        {
+            throw new InvalidOperationException("Something wrong with logic");
+        }
+
+        this._petsDictionary[SelectedKindOfPet] = await this._logic.AddUpdatePetsCount(count, pet).ConfigureAwait(true);
     }
+
+    private bool CanAddPetCommandExecute() => !string.IsNullOrWhiteSpace(SelectedKindOfPet) && EnteredValue.Length > 0;
 
     #endregion
 
@@ -68,7 +123,7 @@ internal class AddWindowViewModel : DialogViewModel
 
     private void OnMainWindowCallCommandExecuted()
     {
-        _userDialog.OpenMainWindow();
+        this._userDialog?.OpenMainWindow();
         OnDialogComplete(EventArgs.Empty);
     }
 
@@ -77,13 +132,26 @@ internal class AddWindowViewModel : DialogViewModel
     #endregion
 
     public AddWindowViewModel()
-	{
-		Title = "Добавить питомца";
-	}
+    {
+        Title = "Добавить питомца";
+    }
 
     public AddWindowViewModel(IUserDialog userDialog, DomainLogic logic) : this()
     {
         this._userDialog = userDialog;
         this._logic = logic;
+        _petsDictionary = GetPetsKind();
+        KindOfPets = _petsDictionary.Keys.ToList() ?? new List<string>() { string.Empty };
+    }
+
+    private Dictionary<string, Pet> GetPetsKind()
+    {
+        var temp = this._logic?.GetPetsAsync().Result;
+        if (temp is null)
+        {
+            return new Dictionary<string, Pet> ();
+        }
+
+        return temp.ToDictionary(x => x.KindOfAnimal ??= string.Empty);
     }
 }

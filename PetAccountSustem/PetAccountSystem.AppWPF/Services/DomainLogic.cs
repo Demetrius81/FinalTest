@@ -69,4 +69,23 @@ internal class DomainLogic
 
         return result ?? Enumerable.Empty<Pet>();
     }
+
+    public async Task<Pet> AddUpdatePetsCount(int count, Pet pet, CancellationToken cancel = default)
+    {
+        var petFromDb = await _petsClient.GetByIDAsync(pet.Id, cancel).ConfigureAwait(false);
+
+        if (petFromDb is null)
+        {
+            throw new ArgumentException("In database current pet nit found", nameof(pet));
+        }
+
+        petFromDb.Count += count;
+
+        if(!await _petsClient.UpdateAsync(petFromDb, cancel).ConfigureAwait(false))
+        {
+            throw new InvalidOperationException("Database not response");
+        }
+
+        return petFromDb;       
+    }
 }

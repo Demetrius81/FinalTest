@@ -29,6 +29,7 @@ public partial class App// : Application
         services.AddSingleton<MainWindowViewModel>();
         services.AddTransient<AddWindowViewModel>();
         services.AddTransient<RemoveWindowViewModel>();
+        services.AddTransient<AddKindOfPetsWindowViewModel>();
         services.AddSingleton<DomainLogic>();
         services.AddSingleton<IUserDialog, UserDialogService>();
         services.AddTransient(s =>
@@ -49,6 +50,13 @@ public partial class App// : Application
         {
             var model = s.GetRequiredService<RemoveWindowViewModel>();
             var window = new RemoveWindow { DataContext = model };
+            model.DialogComplete += (_, _) => window.Close();
+            return window;
+        });
+        services.AddTransient(s =>
+        {
+            var model = s.GetRequiredService<AddKindOfPetsWindowViewModel>();
+            var window = new AddKindOfPetsWindow { DataContext = model };
             model.DialogComplete += (_, _) => window.Close();
             return window;
         });
