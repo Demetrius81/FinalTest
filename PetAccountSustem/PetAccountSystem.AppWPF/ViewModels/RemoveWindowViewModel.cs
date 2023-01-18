@@ -111,7 +111,7 @@ internal class RemoveWindowViewModel : DialogViewModel
         OnMainWindowCallCommandExecuted();
     }
 
-    private bool CanRemovePetCommandExecute() => !string.IsNullOrWhiteSpace(SelectedKindOfPet) && EnteredValue.Length > 0;
+    private bool CanRemovePetCommandExecute() => CountofPets > 0 && EnteredValue.Length > 0;
 
     #endregion
 
@@ -151,7 +151,7 @@ internal class RemoveWindowViewModel : DialogViewModel
 
     private Dictionary<string, Pet> GetPetsKind()
     {
-        var temp = this._logic?.GetPetsAsync().Result;
+        var temp = this._logic?.GetAllPetsAsync().Result;
         if (temp is null)
         {
             return new Dictionary<string, Pet>();

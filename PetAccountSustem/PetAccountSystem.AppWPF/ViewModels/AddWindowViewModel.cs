@@ -100,7 +100,7 @@ internal class AddWindowViewModel : DialogViewModel
 
         if (!result || pet is null)
         {
-            throw new InvalidOperationException("Something wrong with logic");
+            throw new Exception("Something wrong with logic");
         }
 
         this._petsDictionary[SelectedKindOfPet] = await this._logic.AddUpdatePetsCount(count, pet).ConfigureAwait(true);
@@ -142,7 +142,7 @@ internal class AddWindowViewModel : DialogViewModel
 
     private Dictionary<string, Pet> GetPetsKind()
     {
-        var temp = this._logic?.GetPetsAsync().Result;
+        var temp = this._logic?.GetAllPetsAsync().Result;
         if (temp is null)
         {
             return new Dictionary<string, Pet> ();

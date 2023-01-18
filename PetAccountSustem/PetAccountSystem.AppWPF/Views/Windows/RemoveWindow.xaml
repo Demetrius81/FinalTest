@@ -14,7 +14,7 @@
                 <TextBox Text="0" Height="20" Width="50" Margin="2" HorizontalAlignment="Left"/>
             </StackPanel>-->
             <WrapPanel>
-                <TextBox Text="0" Height="20" Width="50" Margin="2" />
+                <TextBox Text="{Binding EnteredValue, UpdateSourceTrigger=PropertyChanged}" Height="20" Width="50" Margin="2"/>
                 <TextBlock Text="Сейчас в питомнике" Margin="15, 2, 2, 2"/>
                 <TextBlock Text="{Binding CountofPets}" FontWeight="Bold" Margin="3, 2, 2, 2"/>
                 <TextBlock Text="животных" Margin="3, 2, 2, 2"/>
@@ -34,7 +34,7 @@
                             Height="20" Width="150" Margin="2" 
                             ItemsSource="{Binding KindsOfPets, UpdateSourceTrigger=PropertyChanged}" 
                             Focusable="True" 
-                            SelectedItem="{Binding SelectedKindOfPet}"/>
+                            SelectedItem="{Binding SelectedKindOfPet, UpdateSourceTrigger=PropertyChanged}"/>
                     </StackPanel>
                 </GroupBox>
             </Grid>

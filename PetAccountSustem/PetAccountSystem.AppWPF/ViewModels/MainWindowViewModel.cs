@@ -177,9 +177,9 @@ internal class MainWindowViewModel : DialogViewModel
     }
 
     private bool CanRemoveWindowCallCommandExecute() =>
-        !(_status != "Нет связи с сервером!" ||
+        _status != "Нет связи с сервером!" ||
         Pets != Enumerable.Empty<Pet>() ||
-        Pets.Count != 1 && (Pets.FirstOrDefault() is not null || Pets.FirstOrDefault()?.Id != 0));
+        Pets.Count != 1 && (Pets.FirstOrDefault() is not null || Pets.FirstOrDefault()?.Id != 0);
 
     #endregion
 

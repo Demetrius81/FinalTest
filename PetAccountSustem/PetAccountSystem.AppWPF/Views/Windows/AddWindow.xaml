@@ -28,7 +28,7 @@
                             Height="20" Width="150" Margin="2" 
                             ItemsSource="{Binding KindOfPets, UpdateSourceTrigger=PropertyChanged}" 
                             Focusable="True" 
-                            SelectedItem="{Binding SelectedKindOfPet}"/>
+                            SelectedItem="{Binding SelectedKindOfPet, UpdateSourceTrigger=PropertyChanged}"/>
                         <Button Content="Добавить вид" Margin="2" Width="100" Command="{Binding AddKindOfPetsCommand}"/>
                 </StackPanel>
                 </GroupBox>

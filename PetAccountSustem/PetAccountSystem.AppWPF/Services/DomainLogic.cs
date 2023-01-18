@@ -12,16 +12,27 @@ using System.Threading.Tasks;
 namespace PetAccountSystem.AppWPF.Services;
 internal class DomainLogic : ILogic
 {
-    //private const string BASE_ADDRESS = "http://localhost:5241";
 
     private readonly PetsClient _petsClient;
 
     public DomainLogic(PetsClient petsClient)
     {
-        //var client = new HttpClient();
-        //client.BaseAddress = new Uri(BASE_ADDRESS);
-        //this._petsClient = new PetsClient(client);
         this._petsClient = petsClient;
+    }
+
+    public async Task<IEnumerable<Pet>> GetAllPetsAsync(CancellationToken cancel = default)
+    {
+        IEnumerable<Pet>? result = null;
+        try
+        {
+            result = await _petsClient.GetAllAsync(cancel).ConfigureAwait(false);
+        }
+        catch (Exception ex)
+        {
+            Debug.WriteLine(ex.ToString());
+        }
+
+        return result ?? Enumerable.Empty<Pet>();
     }
 
     public async Task<IEnumerable<Pet>> GetPetsAsync(CancellationToken cancel = default)
@@ -30,7 +41,7 @@ internal class DomainLogic : ILogic
         try
         {
             result = await _petsClient.GetAllAsync(cancel).ConfigureAwait(false);
-            result = result.Where(x => x.Count > 0);
+            result = result.Where(x => x.Count > 0).Select(i => i);
         }
         catch (Exception ex)
         {
@@ -46,7 +57,7 @@ internal class DomainLogic : ILogic
         try
         {
             result = await _petsClient.GetAllAsync(cancel).ConfigureAwait(false);
-            result = result.Where(i => !i.IsPackAnimal);
+            result = result.Where(i => !i.IsPackAnimal && i.Count > 0).Select(i => i);
         }
         catch (Exception ex)
         {
@@ -62,7 +73,7 @@ internal class DomainLogic : ILogic
         try
         {
             result = await _petsClient.GetAllAsync(cancel).ConfigureAwait(false);
-            result = result.Where(i => i.IsPackAnimal);
+            result = result.Where(i => i.IsPackAnimal && i.Count > 0).Select(i => i);
         }
         catch (Exception ex)
         {
