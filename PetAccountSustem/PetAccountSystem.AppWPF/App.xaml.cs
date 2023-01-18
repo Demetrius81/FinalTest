@@ -30,8 +30,8 @@ public partial class App// : Application
         services.AddTransient<AddWindowViewModel>();
         services.AddTransient<RemoveWindowViewModel>();
         services.AddTransient<AddKindOfPetsWindowViewModel>();
-        services.AddSingleton<DomainLogic>();
         services.AddSingleton<IUserDialog, UserDialogService>();
+        services.AddSingleton<ILogic, DomainLogic>();
         services.AddTransient(s =>
         {
             var model = s.GetRequiredService<MainWindowViewModel>();

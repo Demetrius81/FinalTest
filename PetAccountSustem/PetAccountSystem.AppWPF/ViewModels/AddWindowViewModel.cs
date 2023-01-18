@@ -12,7 +12,7 @@ namespace PetAccountSystem.AppWPF.ViewModels;
 internal class AddWindowViewModel : DialogViewModel
 {
     private readonly IUserDialog? _userDialog;
-    private readonly DomainLogic? _logic;
+    private readonly ILogic? _logic;
 
     private Dictionary<string, Pet> _petsDictionary = new();
 
@@ -131,7 +131,7 @@ internal class AddWindowViewModel : DialogViewModel
         Title = "Добавить питомца";
     }
 
-    public AddWindowViewModel(IUserDialog userDialog, DomainLogic logic) : this()
+    public AddWindowViewModel(IUserDialog userDialog, ILogic logic) : this()
     {
         this._userDialog = userDialog;
         this._logic = logic;

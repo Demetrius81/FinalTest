@@ -4,35 +4,23 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PetAccountSystem.AppWPF.Views.Windows"
+        xmlns:vm="clr-namespace:PetAccountSystem.AppWPF.ViewModels"
         mc:Ignorable="d"
-        d:DataContext="{d:DesignInstance vm:AddWindowViewModel, IsDesignTimeCreatable=True}"
+        d:DataContext="{d:DesignInstance vm:AddKindOfPetsWindowViewModel, IsDesignTimeCreatable=True}"
         Title="{Binding Title}" Height="200" Width="300" ResizeMode="NoResize">
     <StackPanel>
-        <GroupBox Header="Количество питомцев" Margin="2">
+        <GroupBox Header="Новый вид питомца" Margin="2">
             <StackPanel>
-                <TextBox Text="{Binding EnteredValue, UpdateSourceTrigger=PropertyChanged}" Height="20" Width="50" Margin="2" HorizontalAlignment="Left"/>
+                <TextBox Text="{Binding EnteredValue, UpdateSourceTrigger=PropertyChanged}" Height="20" Width="200" Margin="2" HorizontalAlignment="Left"/>
             </StackPanel>
         </GroupBox>
-        <!--<GroupBox Header="Выбор режима отображения" Margin="2">
-            <StackPanel>
-                <RadioButton GroupName="Select" Content="Домашние питомцы" IsChecked="True" Command=""/>
-                <RadioButton GroupName="Select" Content="Въючные питомцы" IsChecked="False" Command=""/>
-            </StackPanel>
-        </GroupBox>-->
         <StackPanel Orientation="Vertical">
             <Grid>
-                <GroupBox Header="Вид питомцев" Margin="2">
-                    <StackPanel Orientation="Horizontal">
-                        <ComboBox 
-                            Height="20" Width="150" Margin="2" 
-                            ItemsSource="{Binding KindOfPets, UpdateSourceTrigger=PropertyChanged}" 
-                            Focusable="True" 
-                            SelectedItem="{Binding SelectedKindOfPet}"/>
-                        <Button Content="Добавить вид" Margin="2" Width="100" Command="{Binding AddKindOfPetsCommand}"/>
-                    </StackPanel>
+                <GroupBox Header="Выбор типа питомца" Margin="2">
+                    <CheckBox IsChecked="{Binding IsPack}" Content="Питомец въючный" Margin="2"/>
                 </GroupBox>
             </Grid>
-            <Button Content="Добавить питомца" Margin="10, 2, 2, 2" Width="254" HorizontalAlignment="Left" Command="{Binding AddPetCommand}"/>
+            <Button Content="Добавить новый вид" Margin="10, 2, 2, 2" Width="254" HorizontalAlignment="Left" Command="{Binding AddPetCommand}"/>
             <Button Content="Назад" Margin="10, 2, 2, 2" Width="254" HorizontalAlignment="Left" Command="{Binding MainWindowCallCommand}"/>
         </StackPanel>
     </StackPanel>

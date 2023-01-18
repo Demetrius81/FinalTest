@@ -13,32 +13,19 @@ namespace PetAccountSystem.AppWPF.ViewModels;
 internal class AddKindOfPetsWindowViewModel : DialogViewModel
 {
     private readonly IUserDialog? _userDialog;
-    private readonly DomainLogic? _logic;
+    private readonly ILogic? _logic;
 
-    private Dictionary<string, Pet> _petsDictionary = new();
+    private IEnumerable<string?> KindsOfPet { get; set; }
 
-    #region KindOfPets
+    #region IsPack
 
-    private ICollection<string> _kindOfPets = new List<string>() { string.Empty };
-
-    /// <summary>Список видов питомцев</summary>
-    public ICollection<string> KindOfPets
-    {
-        get => _kindOfPets;
-        set => Set(ref _kindOfPets, value);
-    }
-
-    #endregion
-
-    #region SelectedKindOfPet
-
-    private string _selectedKindOfPet = string.Empty;
+    private bool _isPack;
 
     /// <summary>Статус программы</summary>
-    public string SelectedKindOfPet
+    public bool IsPack
     {
-        get => _selectedKindOfPet;
-        set => Set(ref _selectedKindOfPet, value);
+        get => _isPack;
+        set => Set(ref _isPack, value);
     }
 
     #endregion
@@ -59,55 +46,23 @@ internal class AddKindOfPetsWindowViewModel : DialogViewModel
 
     #region Commands
 
-    #region AddKindOfPetsCommand
+    #region AddKindCommand
 
-    private LambdaCommand? _AddKindOfPetsCommand;
+    private LambdaCommand? _AddKindCommand;
 
-    public ICommand AddKindOfPetsCommand => _AddKindOfPetsCommand ??= new(OnAddKindOfPetsCommandExecuted, p => true);
+    public ICommand AddKindCommand => _AddKindCommand ??= new(OnAddKindCommandExecuted, CanAddKindCommandExecute);
 
-    private void OnAddKindOfPetsCommandExecuted()
+    private void OnAddKindCommandExecuted()
     {
-        this._userDialog?.OpenAddKindOfPetsWindow();
-        OnDialogComplete(EventArgs.Empty);
+        if (KindsOfPet.Contains(EnteredValue))
+        {
+            throw new InvalidOperationException($"The animal {EnteredValue} already exists");
+        }
 
+        _logic.AddNewAnimal(EnteredValue, IsPack);
     }
 
-    #endregion
-
-    #region AddPetCommand
-
-    private LambdaCommand? _AddPetCommand;
-
-    public ICommand AddPetCommand => _AddPetCommand ??= new(OnAddPetCommandExecuted, CanAddPetCommandExecute);
-
-    private async void OnAddPetCommandExecuted()
-    {
-        if (string.IsNullOrEmpty(EnteredValue))
-        {
-            throw new InvalidOperationException("Need something enter");
-        }
-
-        int count;
-        if (!int.TryParse(EnteredValue, out count))
-        {
-            throw new InvalidOperationException("Need enter some number");
-        }
-        else if (count <= 0)
-        {
-            throw new InvalidOperationException("Number must be greater then zero");
-        }
-
-        var result = this._petsDictionary.TryGetValue(SelectedKindOfPet, out Pet? pet);
-
-        if (!result || pet is null)
-        {
-            throw new InvalidOperationException("Something wrong with logic");
-        }
-
-        this._petsDictionary[SelectedKindOfPet] = await this._logic.AddUpdatePetsCount(count, pet).ConfigureAwait(true);
-    }
-
-    private bool CanAddPetCommandExecute() => !string.IsNullOrWhiteSpace(SelectedKindOfPet) && EnteredValue.Length > 0;
+    private bool CanAddKindCommandExecute() => EnteredValue.Length > 0;
 
     #endregion
 
@@ -130,24 +85,24 @@ internal class AddKindOfPetsWindowViewModel : DialogViewModel
     public AddKindOfPetsWindowViewModel()
     {
         Title = "Добавить тип питомца";
+        IsPack = false;
     }
 
-    public AddKindOfPetsWindowViewModel(IUserDialog userDialog, DomainLogic logic) : this()
+    public AddKindOfPetsWindowViewModel(IUserDialog userDialog, ILogic logic) : this()
     {
         this._userDialog = userDialog;
         this._logic = logic;
-        _petsDictionary = GetPetsKind();
-        KindOfPets = _petsDictionary.Keys.ToList() ?? new List<string>() { string.Empty };
+        KindsOfPet = GetPetsKind();
     }
 
-    private Dictionary<string, Pet> GetPetsKind()
+    private IEnumerable<string?> GetPetsKind()
     {
         var temp = this._logic?.GetPetsAsync().Result;
         if (temp is null)
         {
-            return new Dictionary<string, Pet>();
+            return new List<string>();
         }
 
-        return temp.ToDictionary(x => x.KindOfAnimal ??= string.Empty);
+        return temp.Select(i => i.KindOfAnimal);
     }
 }

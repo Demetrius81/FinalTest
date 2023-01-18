@@ -14,7 +14,7 @@ namespace PetAccountSystem.AppWPF.ViewModels;
 internal class RemoveWindowViewModel : DialogViewModel
 {
     private readonly IUserDialog _userDialog;
-    private readonly DomainLogic _logic;
+    private readonly ILogic _logic;
 
     private Dictionary<string, Pet> _petsDictionary = new();
 
@@ -135,7 +135,7 @@ internal class RemoveWindowViewModel : DialogViewModel
         Title = "Удалить питомца";
     }
 
-    public RemoveWindowViewModel(IUserDialog userDialog, DomainLogic logic)
+    public RemoveWindowViewModel(IUserDialog userDialog, ILogic logic)
     {
         this._logic = logic;
         this._userDialog = userDialog;

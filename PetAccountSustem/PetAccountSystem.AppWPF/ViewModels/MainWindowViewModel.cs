@@ -17,7 +17,7 @@ using System.Windows.Input;
 namespace PetAccountSystem.AppWPF.ViewModels;
 internal class MainWindowViewModel : DialogViewModel
 {
-    private readonly DomainLogic _domainLogic;
+    private readonly ILogic _domainLogic;
     private readonly IUserDialog _userDialog;
 
     #region Pets
@@ -104,7 +104,8 @@ internal class MainWindowViewModel : DialogViewModel
 
     private LambdaCommand? _CloseApplicationCommand;
 
-    public ICommand CloseApplicationCommand => _CloseApplicationCommand ??= new(OnCloseApplicationCommandExecuted, p => true);
+    public ICommand CloseApplicationCommand => 
+        _CloseApplicationCommand ??= new(OnCloseApplicationCommandExecuted, p => true);
 
     private void OnCloseApplicationCommandExecuted()
     {
@@ -117,7 +118,8 @@ internal class MainWindowViewModel : DialogViewModel
 
     private LambdaCommand? _SwichShowStatusCommand;
 
-    public ICommand SwichShowStatusCommand => _SwichShowStatusCommand ??= new(OnSwichShowStatusCommandExecuted, p => true);
+    public ICommand SwichShowStatusCommand => 
+        _SwichShowStatusCommand ??= new(OnSwichShowStatusCommandExecuted, p => true);
 
     private async void OnSwichShowStatusCommandExecuted()
     {
@@ -148,7 +150,8 @@ internal class MainWindowViewModel : DialogViewModel
 
     private LambdaCommand? _AddWindowCallCommand;
 
-    public ICommand AddWindowCallCommand => _AddWindowCallCommand ??= new(OnAddWindowCallCommandExecuted, CanAddWindowCallCommandExecute);
+    public ICommand AddWindowCallCommand => 
+        _AddWindowCallCommand ??= new(OnAddWindowCallCommandExecuted, CanAddWindowCallCommandExecute);
 
     private void OnAddWindowCallCommandExecuted()
     {
@@ -164,7 +167,8 @@ internal class MainWindowViewModel : DialogViewModel
 
     private LambdaCommand? _RemoveWindowCallCommand;
 
-    public ICommand RemoveWindowCallCommand => _RemoveWindowCallCommand ??= new(OnRemoveWindowCallCommandExecuted, CanRemoveWindowCallCommandExecute);
+    public ICommand RemoveWindowCallCommand => 
+        _RemoveWindowCallCommand ??= new(OnRemoveWindowCallCommandExecuted, CanRemoveWindowCallCommandExecute);
 
     private void OnRemoveWindowCallCommandExecuted()
     {
@@ -187,7 +191,7 @@ internal class MainWindowViewModel : DialogViewModel
         Status = "Нет связи с сервером!";
     }
 
-    public MainWindowViewModel(DomainLogic domainLogic, IUserDialog userDialog) : this()
+    public MainWindowViewModel(ILogic domainLogic, IUserDialog userDialog) : this()
     {
         this._domainLogic = domainLogic;
         this._userDialog = userDialog;

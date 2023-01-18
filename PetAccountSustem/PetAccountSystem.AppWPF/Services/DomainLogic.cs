@@ -10,7 +10,7 @@ using System.Threading;
 using System.Threading.Tasks;
 
 namespace PetAccountSystem.AppWPF.Services;
-internal class DomainLogic
+internal class DomainLogic : ILogic
 {
     private const string BASE_ADDRESS = "http://localhost:5241";
 
@@ -114,5 +114,19 @@ internal class DomainLogic
         }
 
         return petFromDb;
+    }
+
+    public async Task<bool> AddNewAnimal(string kindOfPet, bool isPack, CancellationToken cancel = default)
+    {
+        Pet pet = new()
+        {
+            Id = default,
+            IsPackAnimal = isPack,
+            KindOfAnimal = kindOfPet,
+            Count = 0,
+        };
+
+        var result = await this._petsClient.AddAsync(pet, cancel).ConfigureAwait(false);
+        return result is not null;
     }
 }
