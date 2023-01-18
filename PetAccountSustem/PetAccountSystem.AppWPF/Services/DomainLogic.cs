@@ -29,6 +29,7 @@ internal class DomainLogic
         try
         {
             result = await _petsClient.GetAllAsync(cancel).ConfigureAwait(false);
+            result = result.Where(x => x.Count > 0);
         }
         catch (Exception ex)
         {
@@ -51,7 +52,7 @@ internal class DomainLogic
             Debug.WriteLine(ex.ToString());
         }
 
-        return result ?? Enumerable.Empty<Pet>();        
+        return result ?? Enumerable.Empty<Pet>();
     }
 
     public async Task<IEnumerable<Pet>> GetPetsPackAsync(CancellationToken cancel = default)
@@ -81,11 +82,37 @@ internal class DomainLogic
 
         petFromDb.Count += count;
 
-        if(!await _petsClient.UpdateAsync(petFromDb, cancel).ConfigureAwait(false))
+        if (!await _petsClient.UpdateAsync(petFromDb, cancel).ConfigureAwait(false))
         {
             throw new InvalidOperationException("Database not response");
         }
 
-        return petFromDb;       
+        return petFromDb;
+    }
+
+    public async Task<Pet> RemoveUpdatePetsCount(int count, Pet pet, CancellationToken cancel = default)
+    {
+        var petFromDb = await _petsClient.GetByIDAsync(pet.Id, cancel).ConfigureAwait(false);
+
+        if (petFromDb is null)
+        {
+            throw new ArgumentException("In database current pet nit found", nameof(pet));
+        }
+
+        if (petFromDb.Count >= count)
+        {
+            petFromDb.Count -= count;
+        }
+        else
+        {
+            throw new InvalidOperationException("Can't remove more than there is");
+        }
+
+        if (!await _petsClient.UpdateAsync(petFromDb, cancel).ConfigureAwait(false))
+        {
+            throw new InvalidOperationException("Database not response");
+        }
+
+        return petFromDb;
     }
 }
