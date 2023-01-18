@@ -1,4 +1,4 @@
-﻿namespace PetAccountSystem.AppWPF.Services;
+﻿namespace PetAccountSystem.AppWPF.Services.Interfaces;
 internal interface IUserDialog
 {
     void OpenMainWindow();

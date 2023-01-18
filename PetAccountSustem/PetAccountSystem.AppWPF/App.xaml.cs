@@ -1,6 +1,6 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using PetAccountSystem.AppWPF.Infrastructure.Extensions;
-using PetAccountSystem.AppWPF.Services;
+using PetAccountSystem.AppWPF.Services.Interfaces;
 using System;
 using System.Windows;
 

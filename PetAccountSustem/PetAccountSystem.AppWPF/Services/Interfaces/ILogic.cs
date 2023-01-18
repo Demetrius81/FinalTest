@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace PetAccountSystem.AppWPF.Services;
+namespace PetAccountSystem.AppWPF.Services.Interfaces;
 internal interface ILogic
 {
     Task<IEnumerable<Pet>> GetAllPetsAsync(CancellationToken cancel = default);

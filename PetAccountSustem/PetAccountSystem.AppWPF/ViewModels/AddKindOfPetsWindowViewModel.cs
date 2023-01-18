@@ -1,5 +1,5 @@
 ﻿using PetAccountSystem.AppWPF.Infrastructure.Commands;
-using PetAccountSystem.AppWPF.Services;
+using PetAccountSystem.AppWPF.Services.Interfaces;
 using PetAccountSystem.AppWPF.ViewModels.Base;
 using System;
 using System.Collections.Generic;

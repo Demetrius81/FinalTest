@@ -1,4 +1,5 @@
-﻿using PetAccountSystem.Interfaces.Repositories;
+﻿using PetAccountSystem.AppWPF.Services.Interfaces;
+using PetAccountSystem.Interfaces.Repositories;
 using PetAccountSystem.Models.Models;
 using System;
 using System.Collections.Generic;
@@ -7,7 +8,7 @@ using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace PetAccountSystem.AppWPF.Services;
+namespace PetAccountSystem.AppWPF.Services.Implementation;
 internal class DomainLogic : ILogic
 {
 
@@ -15,7 +16,7 @@ internal class DomainLogic : ILogic
 
     public DomainLogic(IRepositoryAsync<Pet> petsClient)
     {
-        this._petsClient = petsClient;
+        _petsClient = petsClient;
     }
 
     public async Task<IEnumerable<Pet>> GetAllPetsAsync(CancellationToken cancel = default)
@@ -136,7 +137,7 @@ internal class DomainLogic : ILogic
             Count = 0,
         };
 
-        var result = await this._petsClient.AddAsync(pet, cancel).ConfigureAwait(false);
+        var result = await _petsClient.AddAsync(pet, cancel).ConfigureAwait(false);
         return result is not null;
     }
 }

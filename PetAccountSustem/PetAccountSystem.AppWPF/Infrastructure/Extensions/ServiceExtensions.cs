@@ -1,5 +1,6 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
-using PetAccountSystem.AppWPF.Services;
+using PetAccountSystem.AppWPF.Services.Implementation;
+using PetAccountSystem.AppWPF.Services.Interfaces;
 using PetAccountSystem.AppWPF.ViewModels;
 using PetAccountSystem.AppWPF.Views.Windows;
 using PetAccountSystem.Client.Pets;
