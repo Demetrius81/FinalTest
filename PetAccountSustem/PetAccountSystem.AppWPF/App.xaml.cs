@@ -1,4 +1,5 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
+using PetAccountSystem.AppWPF.Infrastructure.Extensions;
 using PetAccountSystem.AppWPF.Services;
 using PetAccountSystem.AppWPF.ViewModels;
 using PetAccountSystem.AppWPF.Views.Windows;
@@ -18,55 +19,16 @@ namespace PetAccountSystem.AppWPF;
 /// </summary>
 public partial class App
 {
-    private const string BASE_ADDRESS = "http://localhost:5241";
-
     private static IServiceProvider? _services;
 
     public static IServiceProvider? Services => _services ??= InitialzeServices()?.BuildServiceProvider();
 
     private static IServiceCollection? InitialzeServices()
     {
-
-        var client = new HttpClient();
-        client.BaseAddress = new Uri(BASE_ADDRESS);
-        var petsClient = new PetsClient(client);
-
         var services = new ServiceCollection();
-
-        services.AddTransient<MainWindowViewModel>();
-        services.AddTransient<AddWindowViewModel>();
-        services.AddTransient<RemoveWindowViewModel>();
-        services.AddTransient<AddKindOfPetsWindowViewModel>();
-        services.AddTransient<ILogic, DomainLogic>(x => new DomainLogic(petsClient));
-        services.AddTransient<IUserDialog, UserDialogService>();
-        services.AddTransient(s =>
-        {
-            var model = s.GetRequiredService<MainWindowViewModel>();
-            var window = new MainWindow { DataContext = model };
-            model.DialogComplete += (_, _) => window.Close();
-            return window;
-        });
-        services.AddTransient(s =>
-        {
-            var model = s.GetRequiredService<AddWindowViewModel>();
-            var window = new AddWindow { DataContext = model };
-            model.DialogComplete += (_, _) => window.Close();
-            return window;
-        });
-        services.AddTransient(s =>
-        {
-            var model = s.GetRequiredService<RemoveWindowViewModel>();
-            var window = new RemoveWindow { DataContext = model };
-            model.DialogComplete += (_, _) => window.Close();
-            return window;
-        });
-        services.AddTransient(s =>
-        {
-            var model = s.GetRequiredService<AddKindOfPetsWindowViewModel>();
-            var window = new AddKindOfPetsWindow { DataContext = model };
-            model.DialogComplete += (_, _) => window.Close();
-            return window;
-        });
+        services
+            .ServicesSubscription()
+            .WindowsSubscription();
         return services;
     }
 
