@@ -1,2 +1,190 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<ClassDiagram /> 
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="PetAccountSystem.AppWPF.Infrastructure.Commands.Base.Command">
+    <Position X="6" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAACAAQAAEQAAAAAAAAAAAAAAAAAAAAAAEA=</HashCode>
+      <FileName>Infrastructure\Commands\Base\Command.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="PetAccountSystem.AppWPF.Infrastructure.Commands.LambdaCommand">
+    <Position X="4.5" Y="2.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAEAAAAQAAECAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Infrastructure\Commands\LambdaCommand.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PetAccountSystem.AppWPF.Infrastructure.Extensions.ServiceExtensions">
+    <Position X="26.75" Y="6.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAABAAAABAAAAAAAAAAAAAAAAIAAAA=</HashCode>
+      <FileName>Infrastructure\Extensions\ServiceExtensions.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PetAccountSystem.AppWPF.Services.Implementation.DomainLogic" BaseTypeListCollapsed="true">
+    <Position X="22.5" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AABAAgAgAAAAAAAAAAAAAAAAgAAAAAAAAAAgEACAACA=</HashCode>
+      <FileName>Services\Implementation\DomainLogic.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="PetAccountSystem.AppWPF.Services.Implementation.UserDialogService" BaseTypeListCollapsed="true">
+    <Position X="24.25" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAABAAAAAAAAAAQAAABEgACAECAAEACgAAAgCAAAAA=</HashCode>
+      <FileName>Services\Implementation\UserDialogService.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.22" Collapsed="true" />
+  </Class>
+  <Class Name="PetAccountSystem.AppWPF.ViewModels.Base.DialogViewModel">
+    <Position X="13.25" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAA=</HashCode>
+      <FileName>ViewModels\Base\DialogViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PetAccountSystem.AppWPF.ViewModels.Base.TitledViewModel" Collapsed="true">
+    <Position X="13.25" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAIAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ViewModels\Base\TitledViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PetAccountSystem.AppWPF.ViewModels.Base.ViewModel">
+    <Position X="13.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAABABAIAAAAAAAgAAAAAAAAAAAAAAAACA=</HashCode>
+      <FileName>ViewModels\Base\ViewModel.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="PetAccountSystem.AppWPF.ViewModels.AddErrorWindowViewModel">
+    <Position X="6.5" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAgAAAAAgAAABAACAAAAAA=</HashCode>
+      <FileName>ViewModels\AddErrorWindowViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PetAccountSystem.AppWPF.ViewModels.AddKindErrorWindowViewModel">
+    <Position X="11" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CAAAAAAAAAAAAAAAAAAIAAAwAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ViewModels\AddKindErrorWindowViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PetAccountSystem.AppWPF.ViewModels.AddKindOfPetsWindowViewModel">
+    <Position X="15.5" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EAAAAACAAAAARACAAIAAAAUgAAAAAAEASAEAIAAAAAA=</HashCode>
+      <FileName>ViewModels\AddKindOfPetsWindowViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PetAccountSystem.AppWPF.ViewModels.AddWindowViewModel">
+    <Position X="17.75" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>mAAAhACAAAAAAAGAAIAIAAAwAAAgAAECABAIIAAAAAA=</HashCode>
+      <FileName>ViewModels\AddWindowViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PetAccountSystem.AppWPF.ViewModels.MainWindowViewModel">
+    <Position X="20" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AFDAgAAEQEABAhEEAgAAAAAgEgQAEgSAABAQCABQQAA=</HashCode>
+      <FileName>ViewModels\MainWindowViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PetAccountSystem.AppWPF.ViewModels.RemoveErrorWindowViewModel">
+    <Position X="8.75" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ABAAAAAAAAAAAAAAAAAAAAAgAAAAAAQAAAAQAAAAAAA=</HashCode>
+      <FileName>ViewModels\RemoveErrorWindowViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PetAccountSystem.AppWPF.ViewModels.RemoveWindowViewModel">
+    <Position X="13.25" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>lAAAFACAIAAAgACAAIAAAAAgAAAAAAEAAAQgIAAgAAI=</HashCode>
+      <FileName>ViewModels\RemoveWindowViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PetAccountSystem.AppWPF.Views.Windows.AddErrorWindow" BaseTypeListCollapsed="true">
+    <Position X="24" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Views\Windows\AddErrorWindow.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="PetAccountSystem.AppWPF.Views.Windows.AddKindErrorWindow" BaseTypeListCollapsed="true">
+    <Position X="25.75" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Views\Windows\AddKindErrorWindow.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="PetAccountSystem.AppWPF.Views.Windows.AddKindOfPetsWindow" BaseTypeListCollapsed="true">
+    <Position X="22.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Views\Windows\AddKindOfPetsWindow.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="PetAccountSystem.AppWPF.Views.Windows.AddWindow" BaseTypeListCollapsed="true">
+    <Position X="27.5" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Views\Windows\AddWindow.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="PetAccountSystem.AppWPF.Views.Windows.MainWindow" BaseTypeListCollapsed="true">
+    <Position X="25.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Views\Windows\MainWindow.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="PetAccountSystem.AppWPF.Views.Windows.RemoveErrorWindow" BaseTypeListCollapsed="true">
+    <Position X="27.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Views\Windows\RemoveErrorWindow.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="PetAccountSystem.AppWPF.Views.Windows.RemoveWindow" BaseTypeListCollapsed="true">
+    <Position X="24" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Views\Windows\RemoveWindow.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="PetAccountSystem.AppWPF.App">
+    <Position X="26.75" Y="4" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>oAAAAAAAAAAAAAAQAAAAAAAAAAAAAgAAAAAAAAAAAAA=</HashCode>
+      <FileName>App.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Interface Name="PetAccountSystem.AppWPF.Services.Interfaces.ILogic">
+    <Position X="22.5" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AABAAgAAAAAAAAAAAAAAAAAAgAAAAAAAAAAgEACAACA=</HashCode>
+      <FileName>Services\Interfaces\ILogic.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="PetAccountSystem.AppWPF.Services.Interfaces.IUserDialog">
+    <Position X="24.25" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAQAAAAEgAAAAAAAEAAgAAAgAAAAAA=</HashCode>
+      <FileName>Services\Interfaces\IUserDialog.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
