@@ -1,2 +1,10 @@
-# FinalTest
-This is a practical part of final test
+# Финальный тест
+### Задание
+
+>Организуйте систему учёта для питомника, в котором живут домашние и вьючные животные.
+
+### Решение
+
+В ходе решения была создана UserCase диаграмма пользования программным продуктом:
+
+![UserCase диаграмма](https://github.com/Demetrius81/FinalTest/blob/dev/Diagrams/UseCaseDiagram.jpg)
