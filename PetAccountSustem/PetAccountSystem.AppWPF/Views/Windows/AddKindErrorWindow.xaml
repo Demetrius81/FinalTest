@@ -4,9 +4,13 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PetAccountSystem.AppWPF.Views.Windows"
+        xmlns:vm="clr-namespace:PetAccountSystem.AppWPF.ViewModels"
         mc:Ignorable="d"
-        Title="AddKindErrorWindow" Height="450" Width="800">
-    <Grid>
-        
-    </Grid>
+        d:DataContext="{d:DesignInstance vm:AddKindErrorWindowViewModel, IsDesignTimeCreatable=True}"
+        Title="{Binding Title}" Height="200" Width="300" ResizeMode="NoResize" WindowStyle="None">
+    <StackPanel>
+        <TextBlock Text="Ошибка!" FontSize="20" HorizontalAlignment="Center" Margin="2, 20, 2, 2"/>
+        <TextBlock Text="Такой питомец уже существует." FontSize="15" HorizontalAlignment="Center" Margin="2, 15, 2, 2"/>
+        <Button Content="Ошибку осознаю. Назад" Margin="2, 64, 2, 2" HorizontalAlignment="Center" Command="{Binding AddKindOfPetsCommand}"/>
+    </StackPanel>
 </Window>
