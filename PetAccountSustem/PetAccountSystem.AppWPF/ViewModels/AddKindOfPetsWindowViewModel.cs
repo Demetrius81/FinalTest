@@ -60,6 +60,7 @@ internal class AddKindOfPetsWindowViewModel : DialogViewModel
         }
 
         _logic.AddNewAnimal(EnteredValue, IsPack);
+        OnMainWindowCallCommandExecuted();
     }
 
     private bool CanAddKindCommandExecute() => EnteredValue.Length > 0;

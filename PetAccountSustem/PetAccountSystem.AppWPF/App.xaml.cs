@@ -18,20 +18,27 @@ namespace PetAccountSystem.AppWPF;
 /// </summary>
 public partial class App// : Application
 {
+    private const string BASE_ADDRESS = "http://localhost:5241";
+
     private static IServiceProvider? _services;
 
     public static IServiceProvider? Services => _services ??= InitialzeServices()?.BuildServiceProvider();
 
     private static IServiceCollection? InitialzeServices()
     {
+
+        var client = new HttpClient();
+        client.BaseAddress = new Uri(BASE_ADDRESS);
+        var petsClient = new PetsClient(client);
+
         var services = new ServiceCollection();
 
         services.AddSingleton<MainWindowViewModel>();
         services.AddTransient<AddWindowViewModel>();
         services.AddTransient<RemoveWindowViewModel>();
         services.AddTransient<AddKindOfPetsWindowViewModel>();
+        services.AddTransient<ILogic, DomainLogic>(x => new DomainLogic(petsClient));
         services.AddSingleton<IUserDialog, UserDialogService>();
-        services.AddSingleton<ILogic, DomainLogic>();
         services.AddTransient(s =>
         {
             var model = s.GetRequiredService<MainWindowViewModel>();

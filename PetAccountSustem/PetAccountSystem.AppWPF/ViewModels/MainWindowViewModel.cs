@@ -159,7 +159,7 @@ internal class MainWindowViewModel : DialogViewModel
         OnDialogComplete(EventArgs.Empty);
     }
 
-    private bool CanAddWindowCallCommandExecute() => true;//_status != "Нет связи с сервером!";
+    private bool CanAddWindowCallCommandExecute() => Status != "Нет связи с сервером!";
 
     #endregion
 
@@ -176,10 +176,10 @@ internal class MainWindowViewModel : DialogViewModel
         OnDialogComplete(EventArgs.Empty);
     }
 
-    private bool CanRemoveWindowCallCommandExecute() => true;
-        //!(_status != "Нет связи с сервером!" ||
-        //Pets == Enumerable.Empty<Pet>() ||
-        //Pets.Count == 1 && (Pets.FirstOrDefault() is null || Pets.FirstOrDefault()?.Id == 0));
+    private bool CanRemoveWindowCallCommandExecute() =>
+        !(_status != "Нет связи с сервером!" ||
+        Pets != Enumerable.Empty<Pet>() ||
+        Pets.Count != 1 && (Pets.FirstOrDefault() is not null || Pets.FirstOrDefault()?.Id != 0));
 
     #endregion
 
@@ -206,10 +206,11 @@ internal class MainWindowViewModel : DialogViewModel
     }
 
 
-    //private string GetTestContent()
-    //{
-    //    return CheckStatus ? "Checked" : "Unchecked";
-    //}
+    public void UpdateStatus()
+    {
+        Status = "Нет связи с сервером!";
+        OnSwichShowStatusCommandExecuted();
+    }
 
 
 

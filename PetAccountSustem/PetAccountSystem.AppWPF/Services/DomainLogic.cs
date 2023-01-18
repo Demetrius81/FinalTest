@@ -12,15 +12,16 @@ using System.Threading.Tasks;
 namespace PetAccountSystem.AppWPF.Services;
 internal class DomainLogic : ILogic
 {
-    private const string BASE_ADDRESS = "http://localhost:5241";
+    //private const string BASE_ADDRESS = "http://localhost:5241";
 
     private readonly PetsClient _petsClient;
 
-    public DomainLogic()
+    public DomainLogic(PetsClient petsClient)
     {
-        var client = new HttpClient();
-        client.BaseAddress = new Uri(BASE_ADDRESS);
-        this._petsClient = new PetsClient(client);
+        //var client = new HttpClient();
+        //client.BaseAddress = new Uri(BASE_ADDRESS);
+        //this._petsClient = new PetsClient(client);
+        this._petsClient = petsClient;
     }
 
     public async Task<IEnumerable<Pet>> GetPetsAsync(CancellationToken cancel = default)

@@ -104,6 +104,7 @@ internal class AddWindowViewModel : DialogViewModel
         }
 
         this._petsDictionary[SelectedKindOfPet] = await this._logic.AddUpdatePetsCount(count, pet).ConfigureAwait(true);
+        OnMainWindowCallCommandExecuted();
     }
 
     private bool CanAddPetCommandExecute() => !string.IsNullOrWhiteSpace(SelectedKindOfPet) && EnteredValue.Length > 0;

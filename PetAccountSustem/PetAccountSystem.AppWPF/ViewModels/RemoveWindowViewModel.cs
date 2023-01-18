@@ -108,6 +108,7 @@ internal class RemoveWindowViewModel : DialogViewModel
         }
 
         _petsDictionary[SelectedKindOfPet] = await _logic.RemoveUpdatePetsCount(count, pet).ConfigureAwait(true);
+        OnMainWindowCallCommandExecuted();
     }
 
     private bool CanRemovePetCommandExecute() => !string.IsNullOrWhiteSpace(SelectedKindOfPet) && EnteredValue.Length > 0;

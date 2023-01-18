@@ -20,7 +20,7 @@
                     <CheckBox IsChecked="{Binding IsPack}" Content="Питомец въючный" Margin="2"/>
                 </GroupBox>
             </Grid>
-            <Button Content="Добавить новый вид" Margin="10, 2, 2, 2" Width="254" HorizontalAlignment="Left" Command="{Binding AddPetCommand}"/>
+            <Button Content="Добавить новый вид" Margin="10, 2, 2, 2" Width="254" HorizontalAlignment="Left" Command="{Binding AddKindCommand}"/>
             <Button Content="Назад" Margin="10, 2, 2, 2" Width="254" HorizontalAlignment="Left" Command="{Binding MainWindowCallCommand}"/>
         </StackPanel>
     </StackPanel>
