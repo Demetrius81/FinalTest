@@ -7,7 +7,7 @@
         xmlns:local="clr-namespace:PetAccountSystem.AppWPF"
         mc:Ignorable="d"
         d:DataContext="{d:DesignInstance vm:MainWindowViewModel, IsDesignTimeCreatable=True}"
-        Title="{Binding Title}" Height="450" Width="580">
+        Title="{Binding Title}" Height="450" Width="580" ResizeMode="NoResize">
     <DockPanel>
         <Menu DockPanel.Dock="Top">
             <MenuItem Header="Файл">

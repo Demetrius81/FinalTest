@@ -7,7 +7,7 @@
         xmlns:vm="clr-namespace:PetAccountSystem.AppWPF.ViewModels"
         mc:Ignorable="d"
         d:DataContext="{d:DesignInstance vm:RemoveWindowViewModel, IsDesignTimeCreatable=True}"
-        Title="{Binding Title}" Height="200" Width="300">
+        Title="{Binding Title}" Height="200" Width="300" ResizeMode="NoResize">
     <StackPanel>
         <GroupBox Header="Количество питомцев" Margin="2">
             <!--<StackPanel>
