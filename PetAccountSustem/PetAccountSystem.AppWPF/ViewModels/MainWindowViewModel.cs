@@ -1,24 +1,18 @@
 ﻿using PetAccountSystem.AppWPF.Infrastructure.Commands;
-using PetAccountSystem.AppWPF.Models;
 using PetAccountSystem.AppWPF.Services;
 using PetAccountSystem.AppWPF.ViewModels.Base;
-using PetAccountSystem.Client.Pets;
 using PetAccountSystem.Models.Models;
 using System;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
 using System.Linq;
-using System.Net.Http;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
 
 namespace PetAccountSystem.AppWPF.ViewModels;
 internal class MainWindowViewModel : DialogViewModel
 {
-    private readonly ILogic _domainLogic;
-    private readonly IUserDialog _userDialog;
+    private readonly ILogic? _domainLogic;
+    private readonly IUserDialog? _userDialog;
 
     #region Pets
 
@@ -35,7 +29,7 @@ internal class MainWindowViewModel : DialogViewModel
 
     #region Status
 
-    private string _status;
+    private string _status = string.Empty;
 
     /// <summary>Статус программы</summary>
     public string Status
@@ -104,7 +98,7 @@ internal class MainWindowViewModel : DialogViewModel
 
     private LambdaCommand? _CloseApplicationCommand;
 
-    public ICommand CloseApplicationCommand => 
+    public ICommand CloseApplicationCommand =>
         _CloseApplicationCommand ??= new(OnCloseApplicationCommandExecuted, p => true);
 
     private void OnCloseApplicationCommandExecuted()
@@ -118,16 +112,16 @@ internal class MainWindowViewModel : DialogViewModel
 
     private LambdaCommand? _SwichShowStatusCommand;
 
-    public ICommand SwichShowStatusCommand => 
+    public ICommand SwichShowStatusCommand =>
         _SwichShowStatusCommand ??= new(OnSwichShowStatusCommandExecuted, p => true);
 
     private async void OnSwichShowStatusCommandExecuted()
     {
         var temp = true switch
         {
-            true when _showAll => await _domainLogic.GetPetsAsync().ConfigureAwait(true),
-            true when _showHome => await _domainLogic.GetPetsHomeAsync().ConfigureAwait(true),
-            true when _showPack => await _domainLogic.GetPetsPackAsync().ConfigureAwait(true),
+            true when _showAll => await this._domainLogic.GetPetsAsync().ConfigureAwait(true),
+            true when _showHome => await this._domainLogic.GetPetsHomeAsync().ConfigureAwait(true),
+            true when _showPack => await this._domainLogic.GetPetsPackAsync().ConfigureAwait(true),
             _ => Enumerable.Empty<Pet>()
         };
 
@@ -150,12 +144,12 @@ internal class MainWindowViewModel : DialogViewModel
 
     private LambdaCommand? _AddWindowCallCommand;
 
-    public ICommand AddWindowCallCommand => 
+    public ICommand AddWindowCallCommand =>
         _AddWindowCallCommand ??= new(OnAddWindowCallCommandExecuted, CanAddWindowCallCommandExecute);
 
     private void OnAddWindowCallCommandExecuted()
     {
-        _userDialog.OpenAddWindow();
+        this._userDialog?.OpenAddWindow();
         OnDialogComplete(EventArgs.Empty);
     }
 
@@ -167,12 +161,12 @@ internal class MainWindowViewModel : DialogViewModel
 
     private LambdaCommand? _RemoveWindowCallCommand;
 
-    public ICommand RemoveWindowCallCommand => 
+    public ICommand RemoveWindowCallCommand =>
         _RemoveWindowCallCommand ??= new(OnRemoveWindowCallCommandExecuted, CanRemoveWindowCallCommandExecute);
 
     private void OnRemoveWindowCallCommandExecuted()
     {
-        _userDialog.OpenRemoveWindow();
+        this._userDialog?.OpenRemoveWindow();
         OnDialogComplete(EventArgs.Empty);
     }
 

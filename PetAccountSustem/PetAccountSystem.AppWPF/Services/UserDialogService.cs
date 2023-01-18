@@ -1,11 +1,6 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
-using PetAccountSystem.AppWPF.ViewModels;
 using PetAccountSystem.AppWPF.Views.Windows;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace PetAccountSystem.AppWPF.Services;
 internal class UserDialogService : IUserDialog
@@ -16,6 +11,9 @@ internal class UserDialogService : IUserDialog
     private AddWindow? _addWindow;
     private RemoveWindow? _removeWindow;
     private AddKindOfPetsWindow? _addKindOfPetsWindow;
+    private AddKindErrorWindow? _addKindErrorWindow;
+    private AddErrorWindow? _addErrorWindow;
+    private RemoveErrorWindow? _removeErrorWindow;
 
     public UserDialogService(IServiceProvider services)
     {
@@ -75,6 +73,48 @@ internal class UserDialogService : IUserDialog
         window = this._services.GetRequiredService<AddKindOfPetsWindow>();
         window.Closed += (_, _) => this._addKindOfPetsWindow = null;
         this._addKindOfPetsWindow = window;
+        window.Show();
+    }
+
+    public void OpenAddKindErrorWindow()
+    {
+        if (this._addKindErrorWindow is { } window)
+        {
+            window.Show();
+            return;
+        }
+
+        window = this._services.GetRequiredService<AddKindErrorWindow>();
+        window.Closed += (_, _) => this._addKindErrorWindow = null;
+        this._addKindErrorWindow = window;
+        window.Show();
+    }
+
+    public void OpenAddErrorWindow()
+    {
+        if (this._addErrorWindow is { } window)
+        {
+            window.Show();
+            return;
+        }
+
+        window = this._services.GetRequiredService<AddErrorWindow>();
+        window.Closed += (_, _) => this._addErrorWindow = null;
+        this._addErrorWindow = window;
+        window.Show();
+    }
+
+    public void OpenRemoveErrorWindow()
+    {
+        if (this._removeErrorWindow is { } window)
+        {
+            window.Show();
+            return;
+        }
+
+        window = this._services.GetRequiredService<RemoveErrorWindow>();
+        window.Closed += (_, _) => this._removeErrorWindow = null;
+        this._removeErrorWindow = window;
         window.Show();
     }
 }

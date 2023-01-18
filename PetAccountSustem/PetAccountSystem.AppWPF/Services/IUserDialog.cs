@@ -14,4 +14,10 @@ internal interface IUserDialog
     void OpenRemoveWindow();
 
     void OpenAddKindOfPetsWindow();
+
+    void OpenRemoveErrorWindow();
+
+    void OpenAddErrorWindow();
+
+    void OpenAddKindErrorWindow();
 }

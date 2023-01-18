@@ -13,17 +13,17 @@ using System.Windows.Input;
 namespace PetAccountSystem.AppWPF.ViewModels;
 internal class RemoveWindowViewModel : DialogViewModel
 {
-    private readonly IUserDialog _userDialog;
-    private readonly ILogic _logic;
+    private readonly IUserDialog? _userDialog;
+    private readonly ILogic? _logic;
 
-    private Dictionary<string, Pet> _petsDictionary = new();
+    private readonly Dictionary<string, Pet> _petsDictionary = new();
 
     #region KindsOfPets
 
-    private ICollection<string?> _kindsOfPets = new List<string?>() { string.Empty };
+    private ICollection<string> _kindsOfPets = new List<string>() { string.Empty };
 
     /// <summary>Список видов питомцев</summary>
-    public ICollection<string?> KindsOfPets
+    public ICollection<string> KindsOfPets
     {
         get => _kindsOfPets;
         set => Set(ref _kindsOfPets, value);
@@ -42,7 +42,7 @@ internal class RemoveWindowViewModel : DialogViewModel
         set
         {
             Set(ref _selectedKindOfPet, value);
-            CountofPets = _petsDictionary[_selectedKindOfPet].Count;
+            CountofPets = this._petsDictionary[_selectedKindOfPet].Count;
         } 
     }
 
@@ -85,29 +85,20 @@ internal class RemoveWindowViewModel : DialogViewModel
 
     private async void OnRemovePetCommandExecuted()
     {
-        if (string.IsNullOrEmpty(EnteredValue))
+        if (string.IsNullOrEmpty(EnteredValue) || !int.TryParse(EnteredValue, out int count) || count <= 0)
         {
-            throw new InvalidOperationException("Need something enter");
+            this._userDialog?.OpenRemoveErrorWindow();
+            OnDialogComplete(EventArgs.Empty);
+            return;
         }
 
-        int count;
-        if (!int.TryParse(EnteredValue, out count))
-        {
-            throw new InvalidOperationException("Need enter some number");
-        }
-        else if (count <= 0)
-        {
-            throw new InvalidOperationException("Number must be greater then zero");
-        }
-
-        var result = _petsDictionary.TryGetValue(SelectedKindOfPet, out Pet? pet);
-
+        var result = this._petsDictionary.TryGetValue(SelectedKindOfPet, out Pet? pet);
         if (!result || pet is null)
         {
             throw new InvalidOperationException("Something wrong with logic");
         }
 
-        _petsDictionary[SelectedKindOfPet] = await _logic.RemoveUpdatePetsCount(count, pet).ConfigureAwait(true);
+        this._petsDictionary[SelectedKindOfPet] = await this._logic.RemoveUpdatePetsCount(count, pet).ConfigureAwait(true);
         OnMainWindowCallCommandExecuted();
     }
 
@@ -123,7 +114,7 @@ internal class RemoveWindowViewModel : DialogViewModel
 
     private void OnMainWindowCallCommandExecuted()
     {
-        _userDialog.OpenMainWindow();
+        this._userDialog?.OpenMainWindow();
         OnDialogComplete(EventArgs.Empty);
     }
 
@@ -140,13 +131,8 @@ internal class RemoveWindowViewModel : DialogViewModel
     {
         this._logic = logic;
         this._userDialog = userDialog;
-        _petsDictionary = GetPetsKind();
-
-        //_petsDictionary.Add("aaa", new Pet() { Id = 1, KindOfAnimal = "aaa", Count = 4 });
-        //_petsDictionary.Add("bbb", new Pet() { Id = 2, KindOfAnimal = "bbb", Count = 5 });
-        //_petsDictionary.Add("ccc", new Pet() { Id = 3, KindOfAnimal = "ccc", Count = 6 });
-
-        KindsOfPets = _petsDictionary.Keys.ToList() ?? new List<string>() { string.Empty };
+        this._petsDictionary = GetPetsKind();
+        KindsOfPets = this._petsDictionary.Keys.ToList() ?? new List<string>() { string.Empty };
     }
 
     private Dictionary<string, Pet> GetPetsKind()

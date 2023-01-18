@@ -4,9 +4,7 @@ using PetAccountSystem.AppWPF.ViewModels.Base;
 using PetAccountSystem.Models.Models;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Linq;
-using System.Windows;
 using System.Windows.Input;
 
 namespace PetAccountSystem.AppWPF.ViewModels;
@@ -15,7 +13,7 @@ internal class AddWindowViewModel : DialogViewModel
     private readonly IUserDialog? _userDialog;
     private readonly ILogic? _logic;
 
-    private Dictionary<string, Pet> _petsDictionary = new();
+    private readonly Dictionary<string, Pet> _petsDictionary = new();
 
     #region KindOfPets
 
@@ -82,21 +80,13 @@ internal class AddWindowViewModel : DialogViewModel
 
     private async void OnAddPetCommandExecuted()
     {
-        if (string.IsNullOrEmpty(EnteredValue))
+        if (string.IsNullOrEmpty(EnteredValue) ||
+            !int.TryParse(EnteredValue, out int count) ||
+            count <= 0)
         {
-            throw new InvalidOperationException("Need something enter");
-        }
-
-        int count;
-        if (!int.TryParse(EnteredValue, out count))
-        {
-            
-
-            throw new InvalidOperationException("Need enter some number");
-        }
-        else if (count <= 0)
-        {
-            throw new InvalidOperationException("Number must be greater then zero");
+            this._userDialog?.OpenAddErrorWindow();
+            OnDialogComplete(EventArgs.Empty);
+            return;
         }
 
         var result = this._petsDictionary.TryGetValue(SelectedKindOfPet, out Pet? pet);
@@ -148,7 +138,7 @@ internal class AddWindowViewModel : DialogViewModel
         var temp = this._logic?.GetAllPetsAsync().Result;
         if (temp is null)
         {
-            return new Dictionary<string, Pet> ();
+            return new Dictionary<string, Pet>();
         }
 
         return temp.ToDictionary(x => x.KindOfAnimal ??= string.Empty);
