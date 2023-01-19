@@ -61,6 +61,7 @@ internal class AddKindOfPetsWindowViewModel : DialogViewModel
         {
             this._userDialog?.OpenAddKindErrorWindow();
             OnDialogComplete(EventArgs.Empty);
+            return;
         }
 
             this._logic.AddNewAnimal(EnteredValue, IsPack);
