@@ -59,10 +59,11 @@ internal class AddKindOfPetsWindowViewModel : DialogViewModel
     {
         if (KindsOfPet.Contains(EnteredValue))
         {
-            throw new InvalidOperationException($"The animal {EnteredValue} already exists");
+            this._userDialog?.OpenAddKindErrorWindow();
+            OnDialogComplete(EventArgs.Empty);
         }
 
-        _logic.AddNewAnimal(EnteredValue, IsPack);
+            this._logic.AddNewAnimal(EnteredValue, IsPack);
         OnMainWindowCallCommandExecuted();
     }
 
